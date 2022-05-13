@@ -46,32 +46,77 @@ PromptFun(){
 echo " Enter Target Web/Host/IP: "
 read IP_TARGET; clear
 echo "\n [#] Your Target : $IP_TARGET"
-echo "\n [#] Starting Scanning \n"
+# echo "\n [#] Starting Scanning \n"
 
-# Nmap Target Selection
+echo "
+[#] Contents:
+    [#] Target Selection
+    [#] Port Selection
+    [#] Scan Types
+    [#] Service and Operating System Detection
+    [#] Output formats
+    [#] NSE Scripting
+    [#] HTTP info gathering
+"
+# Nmap Target Selectio
 echo ""
-echo " Nmap Target Selection"
-echo " [1] Scan a single IP	nmap 192.168.1.1"
-echo " [2] Scan a host	nmap www.testhostname.com"
-echo " [3] Scan a range of IPs	nmap 192.168.1.1-20"
-echo " [4] Scan a subnet	nmap 192.168.1.0/24"
-echo " [5] Scan targets from a text file	nmap -iL list-of-ips.txt"
+echo " [#] Nmap Target Selection"
+echo "     [1] Scan a single IP	nmap 192.168.1.1"
+echo "     [2] Scan a host	nmap www.testhostname.com"
+echo "     [3] Scan a range of IPs	nmap 192.168.1.1-20"
+echo "     [4] Scan a subnet	nmap 192.168.1.0/24"
+echo "     [5] Scan targets from a text file	nmap -iL list-of-ips.txt"
 echo ""
 
 # Nmap Port Selection
 echo ""
 echo " [#] Nmap Port Selection"
-echo " [1] Scan a single Port	nmap -p 22 192.168.1.1"
-echo " [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-echo " [3] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
-echo " [4] Scan all 65535 ports	nmap -p- 192.168.1.1"
+echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
+echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
+echo "     [3] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
+echo "     [4] Scan all 65535 ports	nmap -p- 192.168.1.1"
 echo ""
 
 # Nmap Port Scan types
 echo ""
 echo " [#] Nmap Port Scan types"
-echo " [1] Scan using TCP connect	nmap -sT 192.168.1.1"
-echo " [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
-echo " [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
-echo " [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
+echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
+echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
+echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
+echo "     [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
+echo ""
+
+# Service and OS Detection
+echo ""
+echo " [#] Service and OS Detection"
+echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
+echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
+echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
+echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
+echo ""
+
+# Nmap Output Formats
+echo ""
+echo " [#] Nmap Output Formats"
+echo "     [1] Save default output to file	nmap -oN outputfile.txt 192.168.1.1"
+echo "     [2] Save results as XML	nmap -oX outputfile.xml 192.168.1.1"
+echo "     [3] Save results in a format for grep	nmap -oG outputfile.txt 192.168.1.1"
+echo "     [4] Save in all formats	nmap -oA outputfile 192.168.1.1"
+echo ""
+
+# Digging deeper with NSE Scripts
+echo ""
+echo " [#] Digging deeper with NSE Scripts"
+echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
+echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
+echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
+echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
+echo ""
+
+# HTTP Service Information
+echo ""
+echo " [#] HTTP Service Information"
+echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
+echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
+echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
 echo ""
