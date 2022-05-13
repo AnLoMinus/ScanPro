@@ -2,6 +2,15 @@
 # Name : ScanPro
 # Date : May 2022
 # Description : ScanPro is a ScanPro Scan scripts for hacker's.
+# Set up symbols
+# |
+dirty_synced="*"
+unpushed="△"
+dirty_unpushed="▲"
+unpulled="▽"
+dirty_unpulled="▼"
+unpushed_unpulled="⬡"
+dirty_unpushed_unpulled="⬢"
 # |
 nc="\033[00m"
 white="\033[1;37m"
@@ -43,13 +52,31 @@ PromptFun(){
   read s0m3th1ng
 }
 
-echo " Enter Target Web/Host/IP: "
-read IP_TARGET; clear
-echo "\n [#] Your Target : $IP_TARGET"
+# echo " Enter Target Web/Host/IP: "
+# read IP_TARGET; clear
+# echo "\n [#] Your Target : $IP_TARGET"
 # echo "\n [#] Starting Scanning \n"
 
+echo ""
+echo "------------------------------------------------"
+echo " Enter your router ip (like : 192.168.X.X) : "
+read IP_TARGET; clear
+echo "------------------------------------------------"
+echo ""
+echo "....."
+
+sleep 2
+echo "$orange"
+echo "  |-----------------------------"
+echo "  | Your Target is: $IP_TARGET"
+echo "  |-----------------------------"
+echo "  | please wait to scan network "
+echo "  |-----------------------------"
+
+
+# Menu Contents
 echo "
-[#] Contents:
+${cafe}[#] Contents:  ${cyan}
     [#] Target Selection
     [#] Port Selection
     [#] Scan Types
@@ -60,7 +87,7 @@ echo "
 "
 # Nmap Target Selectio
 echo ""
-echo " [#] Nmap Target Selection"
+echo "${cafe} [#] Nmap Target Selection ${cyan}"
 echo "     [1] Scan a single IP	nmap 192.168.1.1"
 echo "     [2] Scan a host	nmap www.testhostname.com"
 echo "     [3] Scan a range of IPs	nmap 192.168.1.1-20"
@@ -70,7 +97,7 @@ echo ""
 
 # Nmap Port Selection
 echo ""
-echo " [#] Nmap Port Selection"
+echo "${cafe} [#] Nmap Port Selection ${cyan}"
 echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
 echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
 echo "     [3] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
@@ -79,7 +106,7 @@ echo ""
 
 # Nmap Port Scan types
 echo ""
-echo " [#] Nmap Port Scan types"
+echo "${cafe} [#] Nmap Port Scan types ${cyan}"
 echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
 echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
 echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
@@ -88,7 +115,7 @@ echo ""
 
 # Service and OS Detection
 echo ""
-echo " [#] Service and OS Detection"
+echo "${cafe} [#] Service and OS Detection ${cyan}"
 echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
 echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
 echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
@@ -97,7 +124,7 @@ echo ""
 
 # Nmap Output Formats
 echo ""
-echo " [#] Nmap Output Formats"
+echo "${cafe} [#] Nmap Output Formats ${cyan}"
 echo "     [1] Save default output to file	nmap -oN outputfile.txt 192.168.1.1"
 echo "     [2] Save results as XML	nmap -oX outputfile.xml 192.168.1.1"
 echo "     [3] Save results in a format for grep	nmap -oG outputfile.txt 192.168.1.1"
@@ -106,7 +133,7 @@ echo ""
 
 # Digging deeper with NSE Scripts
 echo ""
-echo " [#] Digging deeper with NSE Scripts"
+echo "${cafe} [#] Digging deeper with NSE Scripts ${cyan}"
 echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
 echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
 echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
@@ -115,7 +142,7 @@ echo ""
 
 # HTTP Service Information
 echo ""
-echo " [#] HTTP Service Information"
+echo "${cafe} [#] HTTP Service Information ${cyan}"
 echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
 echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
 echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
