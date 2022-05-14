@@ -140,7 +140,7 @@ Menu(){
       npst
       ;;
       4)
-      soad
+      saod
       ;;
       5)
       nof
@@ -294,12 +294,7 @@ npst(){
       read -p "${close}" som3th1ng
       ;;
       4)
-      `nmap ${host}/24`
-      read -p "${close}" som3th1ng
-      ;;
-      5)
-      ip_List
-      nmap -iL ${iplist}
+      nmap -Pn -F ${host}
       read -p "${close}" som3th1ng
       ;;
       x)
@@ -315,12 +310,47 @@ npst(){
 }
 #4 Service and OS Detection
 saod(){
-echo ""
-echo "${cafe} [#] Service and OS Detection ${cyan}"
-echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
-echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
-echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
-echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
+  while true; do
+    #statements
+    clear
+    echo ""
+    echo "${cafe} [#] Service and OS Detection ${cyan}"
+    echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
+    echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
+    echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
+    echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
+    echo ""
+    echo "      ${prompt}"
+    read cmd
+    case ${cmd} in
+      1)
+      #statements
+      nmap -A ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      2)
+      #statements
+      nmap -sV ${portrange} ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      3)
+      nmap -sV --version 5 ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      4)
+      nmap -sV --version 1 ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      x)
+      clear
+      exit
+      ;;
+      *)
+      echo "Invalid entry."
+      sleep 0.3
+      ;;
+    esac
+  done
 echo ""
 }
 #5 Nmap Output Formats
@@ -335,12 +365,47 @@ echo ""
 }
 #6 Digging deeper with NSE Scripts
 ddwns(){
-echo ""
-echo "${cafe} [#] Digging deeper with NSE Scripts ${cyan}"
-echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
-echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
-echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
-echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
+  while true; do
+    #statements
+    clear
+    echo ""
+    echo "${cafe} [#] Digging deeper with NSE Scripts ${cyan}"
+    echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
+    echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
+    echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
+    echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
+    echo ""
+    echo "      ${prompt}"
+    read cmd
+    case ${cmd} in
+      1)
+      #statements
+      nmap -sV -sC ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      2)
+      #statements
+      nmap --script-help=ssl-heartbleed
+      read -p "${close}" som3th1ng
+      ;;
+      3)
+      nmap -sV -p 443 --script=ssl-heartbleed.nse ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      4)
+      nmap -sV --script=smb*  ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      x)
+      clear
+      exit
+      ;;
+      *)
+      echo "Invalid entry."
+      sleep 0.3
+      ;;
+    esac
+  done
 echo ""
 }
 #7 HTTP Service Information
