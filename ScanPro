@@ -439,6 +439,7 @@ ddwns(){
     echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
     echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
     echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
+    echo "     [5] Vulnerability Script	nmap -sV --script=vuln 192.168.1.1"
     echo " "
     echo "      [m] Main Menu"
     echo "      [x] Exit"
@@ -465,6 +466,11 @@ ddwns(){
       ;;
       4)
       nmap -sV --script=smb*  ${host}
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      5)
+      nmap -A -V -sC --script=vuln  ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
