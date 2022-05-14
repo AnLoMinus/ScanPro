@@ -9,17 +9,17 @@ ScanPro - Nmap Menu Scanning
     
 ## Start
 - `sh ScanPro`
-- `[#] ScanPro  
-    [1] Target Selection
-    [2] Port Selection
-    [3] Scan Types
-    [4] Service and Operating System Detection
-    [5] Output formats
-    [6] NSE Scripting
-    [7] HTTP info gathering
+- [#] ScanPro Menu  
+    - [1] Target Selection
+    - [2] Port Selection
+    - [3] Scan Types
+    - [4] Service and Operating System Detection
+    - [5] Output formats
+    - [6] NSE Scripting
+    - [7] HTTP info gathering
 
-    [m] Main Menu
-    [x] Exit
+    - [m] Main Menu
+    - [x] Exit
 
 
 ┌──[Anlominus👽ScanPro$~]
