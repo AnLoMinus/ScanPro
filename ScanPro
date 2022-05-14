@@ -45,35 +45,53 @@ BLACKBG="$(printf '\033[40m')"
 RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 # |
+close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
+lastprompt=$(echo "  ${orange}  └──╼${blue}")
+ipList=$(echo "  | Where is IP List file? : ${green}")
+hostip=$(echo "  | What is your IP Target or Host: ${green}")
+hostport=$(echo "  | Open Port on Target or Host:  ${green}")
+# |
 PromptFun(){
   echo ""
   echo "  ${orange}  ┌──[${CYAN}Anlominus${purple}👽${red}Scan${BLUE}Pro$~${orange}]${cyan}"
-  echo "  ${orange}  └──╼${green}"
+  read -p "${lastprompt}" 
+  # read -p "    └──╼ Enter selection [0-7] > "
 }
 prompt="$(PromptFun)"
+Ip_List(){
+  echo ""
+  echo "${blue}  |"
+  echo "${blue}  |---------------------------------"
+  read -p  "${ipList}" iplist
+  echo "${blue}  |---------------------------------"
+  echo "${blue}  |"
+  echo "${cyan}"
+}
+What_IP(){
+  echo ""
+  echo "${blue}  |"
+  echo "${blue}  |---------------------------------"
+  read -p  "${hostip}" host
+  echo "${blue}  |---------------------------------"
+  echo "${blue}  |"
+  echo "${cyan}"
+}
+What_PORT(){
+  echo ""
+  echo "${blue}  |"
+  echo "${blue}  |-------------------------------"
+  read -p  "${hostport}" port
+  echo "${blue}  |-------------------------------"
+  echo "${blue}  |"
+  echo "${cyan}"
+
+}
 
 prcscn(){
   clear
   echo "${yellow}\n[!] Scanning: ${cyan}${IP_TARGET}${yellow} [ Please Wait ]\n"
   echo
 }
-
-
-# echo " Enter Target Web/Host/IP: "
-# read IP_TARGET; clear
-# echo "\n [#] Your Target : $IP_TARGET"
-# echo "\n [#] Starting Scanning \n"
-
-echo ""
-#echo " Enter Your Target IP (Like : 192.168.X.X) : "
-echo "  |---------------------------------"
-read -p  "  | What is your IP Target or Host: " host
-echo "  |---------------------------------"
-echo "  |"
-echo "  |-------------------------------"
-read -p  "  | Open Port on Target or Host:  " port
-echo "  |-------------------------------"
-echo ""
 # Menu Contents
 Menu(){
   while true; do
@@ -144,25 +162,35 @@ nts(){
     read cmd
     case ${cmd} in
       1)
-      nmap ${IP_TARGET}
+      #statements
+      What_IP
+      What_PORT
+      nmap ${host}
+      read -p "${close}" som3th1ng
       ;;
       2)
-      nps
+      #statements
+      What_IP
+      What_PORT
+      nmap ${host}
+      read -p "${close}" som3th1ng
       ;;
       3)
-      npst
+      What_IP
+      What_PORT
+      `nmap ${host}-20`
+      read -p "${close}" som3th1ng
       ;;
       4)
-      soad
+      What_IP
+      What_PORT
+      `nmap ${host}/24`
+      read -p "${close}" som3th1ng
       ;;
       5)
-      nof
-      ;;
-      6)
-      ddwns
-      ;;
-      7)
-      hsi
+      Ip_List
+      nmap -iL ${ipList}
+      read -p "${close}" som3th1ng
       ;;
       x)
       clear
