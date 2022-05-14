@@ -49,8 +49,9 @@ BLINK="$(printf '\033[5;31m')"
 # |
 close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
 lastprompt=$(echo "  ${orange}  └──╼${orange}")
-ipList=$(echo "  | Where is IP List file? : ${green}")
-hostip=$(echo "  | What is your IP Target or Host: ${green}")
+portrange=$(echo "  | Enter Port Range 1-65535: ${green}")
+ipList=$(echo "  | Where is IP List File? : ${green}")
+hostip=$(echo "  | Enter IP Target or Host: ${green}")
 hostport=$(echo "  | Open Port on Target or Host:  ${green}")
 # |
 PromptFun(){
@@ -65,6 +66,15 @@ ip_List(){
   echo "${blue}  |"
   echo "${cyan}  |---------------------------------"
   read -p  "${ipList}" iplist
+  echo "${cyan}  |---------------------------------"
+  echo "${blue}  |"
+  echo "${cyan}"
+}
+port_Range(){
+  echo ""
+  echo "${blue}  |"
+  echo "${cyan}  |---------------------------------"
+  read -p  "${portrange}" portrange
   echo "${cyan}  |---------------------------------"
   echo "${blue}  |"
   echo "${cyan}"
@@ -143,7 +153,11 @@ Menu(){
       ;;
       x)
       clear
-      exit
+      break
+      ;;
+      *)
+      echo "Invalid entry."
+      sleep 0.3
       ;;
     esac
   done
@@ -192,17 +206,63 @@ nts(){
       clear
       exit
       ;;
+      *)
+      echo "Invalid entry."
+      sleep 0.3
+      ;;
     esac
   done
 }
 #2 Nmap Port Selection
 nps(){
+
+    while true; do
+      #statements
+      clear
+      echo "${cafe} [#] Nmap Port Selection ${cyan}"
+      echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
+      echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
+      echo "     [3] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
+      echo "     [4] Scan all 65535 ports	nmap -p- 192.168.1.1"
+      echo ""
+      echo "      ${prompt}"
+      read cmd
+      case ${cmd} in
+        1)
+        #statements
+        nmap -p ${host}
+        read -p "${close}" som3th1ng
+        ;;
+        2)
+        #statements
+        port_Range
+        nmap -p ${portrange} ${host}
+        read -p "${close}" som3th1ng
+        ;;
+        3)
+        `nmap ${host}-20`
+        read -p "${close}" som3th1ng
+        ;;
+        4)
+        `nmap ${host}/24`
+        read -p "${close}" som3th1ng
+        ;;
+        5)
+        ip_List
+        nmap -iL ${iplist}
+        read -p "${close}" som3th1ng
+        ;;
+        x)
+        clear
+        exit
+        ;;
+        *)
+        echo "Invalid entry."
+        sleep 0.3
+        ;;
+      esac
+    done
 echo ""
-echo "${cafe} [#] Nmap Port Selection ${cyan}"
-echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
-echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-echo "     [3] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
-echo "     [4] Scan all 65535 ports	nmap -p- 192.168.1.1"
 echo ""
 }
 #3 Nmap Port Scan types
