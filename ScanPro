@@ -65,25 +65,29 @@ prcscn(){
 # echo "\n [#] Starting Scanning \n"
 
 echo ""
-echo "------------------------------------------------"
 #echo " Enter Your Target IP (Like : 192.168.X.X) : "
-echo "------------------------------------------------"
-echo " Enter Your Target IP (Like : 192.168.X.X) : " ; read -r IP_TARGET ; clear
+echo "  |---------------------------------"
+read -p  "  | What is your IP Target or Host: " host
+echo "  |---------------------------------"
+echo "  |"
+echo "  |-------------------------------"
+read -p  "  | Open Port on Target or Host:  " port
+echo "  |-------------------------------"
 echo ""
-echo "$orange"
-echo "  |-----------------------------"
-echo "  | Your Target is: $IP_TARGET"
-echo "  |-----------------------------"
-echo "  | please wait to scan network "
-echo "  |-----------------------------"
-
-
 # Menu Contents
 Menu(){
   while true; do
-    #statements
     clear
-    echo "  [#] ScanPro  ${cyan}"
+    #statements
+    echo "\n${cyan}  |"
+    echo "  |${cafe} [#] Basic Information"
+    echo "${cyan}  |-----------------------------"
+    echo "${cyan}  |${green} [!] Your Host Target is:${cafe} $host"
+    echo "${cyan}  |${green} [!] Your Port Target is:${cafe} $port"
+    echo "${cyan}  |-----------------------------"
+    echo "${cyan}  |"
+    #statements
+    echo "\n  [#] ScanPro  ${cyan}"
     echo "      [1] Target Selection"
     echo "      [2] Port Selection"
     echo "      [3] Scan Types"
