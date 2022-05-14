@@ -113,8 +113,8 @@ scanPro_About(){
   echo $green"        =========================================================    "
   echo $cyan"          Script by             $white":" $orange Leon Yaakobov ( #AnLoMinus ) "
   echo $cyan"          Version               $white":" $orange $Version  "
-  echo $cyan"          Follow me on Github   $white":" $orange guthub.com/Anlominus "
-  echo $cyan"          Follow me on Telegram $white":" $orange @Anlominus "
+  echo $cyan"          Follow me on Github   $white":" $orange github.com/Anlominus "
+  echo $cyan"          Contact me on Telegram $white":" $orange @Anlominus "
   echo $green"        =========================================================    "
 }
 scanPro_About
