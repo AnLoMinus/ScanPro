@@ -109,18 +109,24 @@ What_PORT(){
   echo "${cyan}"
 
 }
+what_LogPath(){
+  read -p "    [?] Name of Report: " namafile
+  log_Path="ScanProLog/$namafile"
+  # nano Output/$namafile.grep
+}
 What_IP
 What_PORT
+what_LogPath
 your_choice(){
   echo "\n${cyan}  |"
   echo "  |${cafe} [#] Basic Information"
   echo "${cyan}  |-----------------------------"
   echo "${cyan}  |${green} [!] Your Host Target is:${cafe} $host"
   echo "${cyan}  |${green} [!] Your Port Target is:${cafe} $port"
+  echo "${cyan}  |${green} [!] Your Log Target is:${cafe} $log_Path"
   echo "${cyan}  |-----------------------------"
   echo "${cyan}  |"
 }
-
 prcscn(){
   clear
   echo "${yellow}\n[!] Scanning: ${cyan}${IP_TARGET}${yellow} [ Please Wait ]\n"
