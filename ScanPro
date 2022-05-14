@@ -47,13 +47,15 @@ BLACKBG="$(printf '\033[40m')"
 RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 # |
+host="192.168.1.0"
 portsr="1"
 close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
-lastprompt=$(echo "  ${orange}  └──╼${orange}")
-portrange=$(echo "  | Your Port Range 1-65535: ${green}")
-ipList=$(echo "  | Your is IP List File: ${green}")
-hostip=$(echo "  | Your IP Target or Host: ${green}")
-hostport=$(echo "  | Your Port on Target or Host:  ${green}")
+lastprompt=$(echo "[${green}?${orange}]  ${orange}  └──╼${orange}")
+portrange=$(echo "[${green}?${orange}]  | Your Port Range 1-65535: ${green}")
+ipList=$(echo "[${green}?${orange}]  | Your is IP List File: ${green}")
+hostip=$(echo "[${green}?${orange}]  | Your IP Target or Host: ${green}")
+hostport=$(echo "[${green}?${orange}]  | Your Port on Target or Host:  ${green}")
+log_report=$(echo "[${green}?${orange}]  | Your Port on Target or Host:  ${green}")
 # |
 PromptFun(){
   echo ""
@@ -72,60 +74,81 @@ $cWall    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓�
   echo -n ""
   read read_somthing
 }
-ip_List(){
-  echo ""
-  echo "${blue}  |"
-  echo "${cyan}  |---------------------------------"
-  read -p  "${ipList}" iplist
-  echo "${cyan}  |---------------------------------"
-  echo "${blue}  |"
-  echo "${cyan}"
-}
-port_Range(){
-  echo ""
-  echo "${blue}  |"
-  echo "${cyan}  |---------------------------------"
-  read -p  "${portrange}" portrange
-  echo "${cyan}  |---------------------------------"
-  echo "${blue}  |"
-  echo "${cyan}"
-}
-What_IP(){
-  echo ""
-  echo "${blue}  |"
-  echo "${cyan}  |---------------------------------"
-  read -p  "${hostip}" host
-  echo "${cyan}  |---------------------------------"
-  echo "${blue}  |"
-  echo "${cyan}"
-}
-What_PORT(){
-  echo ""
-  echo "${blue}  |"
-  echo "${cyan}  |-------------------------------"
-  read -p  "${hostport}" port
-  echo "${cyan}  |-------------------------------"
-  echo "${blue}  |"
-  echo "${cyan}"
+# Basic Information
+choose_Target(){
+  ip_List(){
+    echo ""
+    echo "${blue}  |"
+    echo "${cyan}  |---------------------------------"
+    read -p  " ${ipList}" iplist
+    echo "${cyan}  |---------------------------------"
+    echo "${blue}  |"
+    echo "${cyan}"
+
+  }
+  port_Range(){
+    echo ""
+    echo "${blue}  |"
+    echo "${cyan}  |---------------------------------"
+    read -p  " ${portrange}" portrange
+    echo "${cyan}  |---------------------------------"
+    echo "${blue}  |"
+    echo "${cyan}"
+
+  }
+  What_IP(){
+    echo ""
+    echo "${blue}  |"
+    echo "${cyan}  |---------------------------------"
+    read -p  " ${hostip}" host
+    echo "${cyan}  |---------------------------------"
+    echo "${blue}  |"
+    echo "${cyan}"
+
+  }
+  What_PORT(){
+    echo ""
+    echo "${blue}  |"
+    echo "${cyan}  |-------------------------------"
+    read -p  " ${hostport}" port
+    echo "${cyan}  |-------------------------------"
+    echo "${blue}  |"
+    echo "${cyan}"
+
+  }
+  what_LogPath(){
+    echo ""
+    echo "${blue}  |"
+    echo "${cyan}  |-------------------------------"
+    read -p  " ${log_report}" namefile
+    echo "${cyan}  |-------------------------------"
+    echo "${blue}  |"
+    echo "${cyan}"
+
+  }
+  What_IP
+  What_PORT
+  what_LogPath
+  sleep 0.94
 
 }
-what_LogPath(){
-  read -p "    [?] Name of Report: " namafile
-  log_Path="ScanProLog/$namafile"
-  # nano Output/$namafile.grep
-}
-What_IP
-What_PORT
-what_LogPath
+choose_Target
 your_choice(){
+  if  [$namefile = ""] ; then
+    log_Path="ScanProLog/ScanProX.log"
+  fi
+  if  [$host = ""] ; then
+    host="192.168.1.0"
+  fi
   echo "\n${cyan}  |"
-  echo "  |${cafe} [#] Basic Information"
+  echo "  |${green} [#] ${cyan}Target Information"
   echo "${cyan}  |-----------------------------"
-  echo "${cyan}  |${green} [!] Your Host Target is:${cafe} $host"
-  echo "${cyan}  |${green} [!] Your Port Target is:${cafe} $port"
-  echo "${cyan}  |${green} [!] Your Log Target is:${cafe} $log_Path"
-  echo "${cyan}  |-----------------------------"
-  echo "${cyan}  |"
+  echo "${cyan}  |${green} [!] ${cafe}IP/Host Target:${orange} $host"
+  echo "${cyan}  |${green} [!] ${cafe}Port Target:${orange} $port"
+  echo "${cyan}  |${green} [!] ${cafe}Log OutPut Location:${orange} $log_Path"
+  echo "${cyan}  |-----------------------------------------------"
+  echo "${cyan}  |${green} [!] ${cyan}Check if you provide right information"
+  echo "${cyan}  |-----------------------------------------------"
 }
 prcscn(){
   clear
@@ -220,27 +243,32 @@ nts(){
     case ${cmd} in
       1)
       #statements
+      echo "     [1] Scan a single IP	nmap 192.168.1.1"
       nmap ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       2)
       #statements
+      echo "     [2] Scan a host	nmap www.testhostname.com"
       nmap ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       3)
+      echo "     [3] Scan a range of IPs	nmap 192.168.1.1-20"
       nmap ${host}-20
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       4)
+      echo "     [4] Scan a subnet	nmap 192.168.1.0/24"
       nmap ${host}/24
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       5)
+      echo "     [5] Scan targets from a text file	nmap -iL list-of-ips.txt"
       ip_List
       nmap -iL ${iplist}
       read -p "${close}" som3th1ng
@@ -354,22 +382,26 @@ npst(){
     case ${cmd} in
       1)
       #statements
+      echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
       nmap -sT ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       2)
       #statements
+      echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
       nmap -sS ${portrange} ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       3)
+      echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
       nmap -sU -p ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       4)
+      echo "     [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
       nmap -Pn -F ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
@@ -411,27 +443,32 @@ saod(){
     case ${cmd} in
       1)
       #statements
+      echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
       nmap -A ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       2)
       #statements
+      echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
       nmap -sV ${portrange} ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       3)
+      echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
       nmap -sV --version 5 ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       4)
+      echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
       nmap -sV --version 1 ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       5)
+      echo "     [5] Detect OS nmap -O 192.168.1.1"
       nmap -O ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
@@ -484,27 +521,35 @@ ddwns(){
     case ${cmd} in
       1)
       #statements
+      echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
       nmap -sV -sC ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       2)
       #statements
+      echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
       nmap --script-help=ssl-heartbleed
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       3)
+      #statements
+      echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
       nmap -sV -p 443 --script=ssl-heartbleed.nse ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       4)
+      #statements
+      echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
       nmap -sV --script=smb*  ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
       5)
+      #statements
+      echo "     [5] Vulnerability Script	nmap -sV --script=vuln 192.168.1.1"
       nmap -A -sC --script=vuln  ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
@@ -526,11 +571,54 @@ echo ""
 }
 #7 HTTP Service Information
 hsi(){
-echo ""
-echo "${cafe} [#] HTTP Service Information ${cyan}"
-echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
-echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
-echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
+while true; do
+  #statements
+  clear
+  your_choice
+  #statements
+  echo ""
+  echo "${cafe} [#] HTTP Service Information ${cyan}"
+  echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
+  echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
+  echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
+  echo " "
+  echo "      [m] Main Menu"
+  echo "      [x] Exit"
+  echo " "
+  echo "      ${prompt}"
+  read -p " └──╼ Enter selection [0-4] > " cmd
+  case ${cmd} in
+    1)
+    #statements
+    echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
+    nmap --script=http-title ${host}/24
+    read -p "${close}" som3th1ng
+    ReadSomthing
+    ;;
+    2)
+    #statements
+    echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
+    nmap --script=http-header ${host}/24
+    read -p "${close}" som3th1ng
+    ReadSomthing
+    ;;
+    3)
+    #statements
+    echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
+    nmap --script=http-enum ${host}/24
+    read -p "${close}" som3th1ng
+    ReadSomthing
+    ;;
+    x)
+    clear
+    exit
+    ;;
+    *)
+    echo "Invalid entry."
+    sleep 0.3
+    ;;
+  esac
+done
 echo ""
 }
 
