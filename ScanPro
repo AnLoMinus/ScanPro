@@ -215,7 +215,6 @@ nts(){
 }
 #2 Nmap Port Selection
 nps(){
-
     while true; do
       #statements
       clear
@@ -267,13 +266,52 @@ echo ""
 }
 #3 Nmap Port Scan types
 npst(){
-echo ""
-echo "${cafe} [#] Nmap Port Scan types ${cyan}"
-echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
-echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
-echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
-echo "     [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
-echo ""
+  while true; do
+    #statements
+    clear
+    echo ""
+    echo "${cafe} [#] Nmap Port Scan types ${cyan}"
+    echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
+    echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
+    echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
+    echo "     [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
+    echo ""
+    echo "      ${prompt}"
+    read cmd
+    case ${cmd} in
+      1)
+      #statements
+      nmap -sT ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      2)
+      #statements
+      nmap -sS ${portrange} ${host}
+      read -p "${close}" som3th1ng
+      ;;
+      3)
+      `nmap -sU -p ${host}`
+      read -p "${close}" som3th1ng
+      ;;
+      4)
+      `nmap ${host}/24`
+      read -p "${close}" som3th1ng
+      ;;
+      5)
+      ip_List
+      nmap -iL ${iplist}
+      read -p "${close}" som3th1ng
+      ;;
+      x)
+      clear
+      exit
+      ;;
+      *)
+      echo "Invalid entry."
+      sleep 0.3
+      ;;
+    esac
+  done
 }
 #4 Service and OS Detection
 saod(){
