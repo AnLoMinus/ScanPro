@@ -4,6 +4,8 @@
 # Description : ScanPro is a ScanPro Scan scripts for hacker's.
 # Set up symbols
 # |
+clear
+# |
 dirty_synced="*"
 unpushed="△"
 dirty_unpushed="▲"
@@ -46,7 +48,7 @@ RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 # |
 close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
-lastprompt=$(echo "  ${orange}  └──╼${blue}")
+lastprompt=$(echo "  ${orange}  └──╼${orange}")
 ipList=$(echo "  | Where is IP List file? : ${green}")
 hostip=$(echo "  | What is your IP Target or Host: ${green}")
 hostport=$(echo "  | Open Port on Target or Host:  ${green}")
@@ -54,38 +56,40 @@ hostport=$(echo "  | Open Port on Target or Host:  ${green}")
 PromptFun(){
   echo ""
   echo "  ${orange}  ┌──[${CYAN}Anlominus${purple}👽${red}Scan${BLUE}Pro$~${orange}]${cyan}"
-  read -p "${lastprompt}" 
+  echo "${lastprompt}"
   # read -p "    └──╼ Enter selection [0-7] > "
 }
 prompt="$(PromptFun)"
-Ip_List(){
+ip_List(){
   echo ""
   echo "${blue}  |"
-  echo "${blue}  |---------------------------------"
+  echo "${cyan}  |---------------------------------"
   read -p  "${ipList}" iplist
-  echo "${blue}  |---------------------------------"
+  echo "${cyan}  |---------------------------------"
   echo "${blue}  |"
   echo "${cyan}"
 }
 What_IP(){
   echo ""
   echo "${blue}  |"
-  echo "${blue}  |---------------------------------"
+  echo "${cyan}  |---------------------------------"
   read -p  "${hostip}" host
-  echo "${blue}  |---------------------------------"
+  echo "${cyan}  |---------------------------------"
   echo "${blue}  |"
   echo "${cyan}"
 }
 What_PORT(){
   echo ""
   echo "${blue}  |"
-  echo "${blue}  |-------------------------------"
+  echo "${cyan}  |-------------------------------"
   read -p  "${hostport}" port
-  echo "${blue}  |-------------------------------"
+  echo "${cyan}  |-------------------------------"
   echo "${blue}  |"
   echo "${cyan}"
 
 }
+What_IP
+What_PORT
 
 prcscn(){
   clear
@@ -144,7 +148,7 @@ Menu(){
     esac
   done
 }
-#1 Nmap Target Selectio
+#1 Nmap Target Selection
 nts(){
   while true; do
     #statements
@@ -163,33 +167,25 @@ nts(){
     case ${cmd} in
       1)
       #statements
-      What_IP
-      What_PORT
       nmap ${host}
       read -p "${close}" som3th1ng
       ;;
       2)
       #statements
-      What_IP
-      What_PORT
       nmap ${host}
       read -p "${close}" som3th1ng
       ;;
       3)
-      What_IP
-      What_PORT
       `nmap ${host}-20`
       read -p "${close}" som3th1ng
       ;;
       4)
-      What_IP
-      What_PORT
       `nmap ${host}/24`
       read -p "${close}" som3th1ng
       ;;
       5)
-      Ip_List
-      nmap -iL ${ipList}
+      ip_List
+      nmap -iL ${iplist}
       read -p "${close}" som3th1ng
       ;;
       x)
