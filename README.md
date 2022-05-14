@@ -27,6 +27,11 @@ ScanPro - Nmap Menu Scanning
 ┌──[Anlominus👽ScanPro$~]  
 └──╼ Enter selection [0-7] >
 
+---
 
+# TODO / Check List List
+- add Function: 
+    - Export Beutify Log Report
+---
 ## Inspired by
 - [DracNmap](https://github.com/screetsec/Dracnmap)
