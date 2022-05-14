@@ -22,7 +22,8 @@ ScanPro - Nmap Menu Scanning
     - [x] Exit
 
 
-┌──[Anlominus👽ScanPro$~]
-└──╼ Enter selection [0-7] >`
+┌──[Anlominus👽ScanPro$~]  
+└──╼ Enter selection [0-7] >
 
 
+## Inspired by
