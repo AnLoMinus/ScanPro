@@ -374,6 +374,7 @@ saod(){
     echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
     echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
     echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
+    echo "     [5] Detect OS nmap -O 192.168.1.1"
     echo " "
     echo "      [m] Main Menu"
     echo "      [x] Exit"
@@ -400,6 +401,11 @@ saod(){
       ;;
       4)
       nmap -sV --version 1 ${host}
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      5)
+      nmap -O ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
