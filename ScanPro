@@ -162,7 +162,7 @@ Menu(){
     clear
     your_choice
     #statements
-    echo "\n  [#] ScanPro  ${cyan}"
+    echo "\n  [#] ScanPro Menu ${cyan}"
     echo "      [1] Target Selection"
     echo "      [2] Port Selection"
     echo "      [3] Scan Types"
