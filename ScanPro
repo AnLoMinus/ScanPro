@@ -47,6 +47,7 @@ BLACKBG="$(printf '\033[40m')"
 RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 # |
+portsr="1"
 close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
 lastprompt=$(echo "  ${orange}  └──╼${orange}")
 portrange=$(echo "  | Enter Port Range 1-65535: ${green}")
@@ -110,6 +111,15 @@ What_PORT(){
 }
 What_IP
 What_PORT
+your_choice(){
+  echo "\n${cyan}  |"
+  echo "  |${cafe} [#] Basic Information"
+  echo "${cyan}  |-----------------------------"
+  echo "${cyan}  |${green} [!] Your Host Target is:${cafe} $host"
+  echo "${cyan}  |${green} [!] Your Port Target is:${cafe} $port"
+  echo "${cyan}  |-----------------------------"
+  echo "${cyan}  |"
+}
 
 prcscn(){
   clear
@@ -119,15 +129,9 @@ prcscn(){
 # Menu Contents
 Menu(){
   while true; do
-    clear
     #statements
-    echo "\n${cyan}  |"
-    echo "  |${cafe} [#] Basic Information"
-    echo "${cyan}  |-----------------------------"
-    echo "${cyan}  |${green} [!] Your Host Target is:${cafe} $host"
-    echo "${cyan}  |${green} [!] Your Port Target is:${cafe} $port"
-    echo "${cyan}  |-----------------------------"
-    echo "${cyan}  |"
+    clear
+    your_choice
     #statements
     echo "\n  [#] ScanPro  ${cyan}"
     echo "      [1] Target Selection"
@@ -191,6 +195,8 @@ nts(){
   while true; do
     #statements
     clear
+    your_choice
+    #statements
     echo ""
     echo "${cafe} [#] Nmap Target Selection ${cyan}"
     echo ""
@@ -253,10 +259,13 @@ nps(){
     while true; do
       #statements
       clear
+      your_choice
+      #statements
+      echo ""
       echo "${cafe} [#] Nmap Port Selection ${cyan}"
       echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
       echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-      echo "     [3] Scan a range of ports	nmap -p 1-%00 192.168.1.1"
+      echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
       echo "     [4] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
       echo "     [5] Scan all 65535 ports	nmap -p- 192.168.1.1"
       echo " "
@@ -269,21 +278,21 @@ nps(){
         1)
         #statements
         echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
-        nmap -p ${port} ${host}
+        nmap -p ${portsr} ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
         2)
         #statements
         echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-        nmap -p ${port}-100 ${host}
+        nmap -p ${portsr}-100 ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
         3)
         #statements
         echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
-        nmap -p ${port}-255 ${host}
+        nmap -p ${portsr}-255 ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
@@ -322,6 +331,8 @@ npst(){
   while true; do
     #statements
     clear
+    your_choice
+    #statements
     echo ""
     echo "${cafe} [#] Nmap Port Scan types ${cyan}"
     echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
@@ -376,6 +387,8 @@ saod(){
   while true; do
     #statements
     clear
+    your_choice
+    #statements
     echo ""
     echo "${cafe} [#] Service and OS Detection ${cyan}"
     echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
@@ -447,6 +460,8 @@ ddwns(){
   while true; do
     #statements
     clear
+    your_choice
+    #statements
     echo ""
     echo "${cafe} [#] Digging deeper with NSE Scripts ${cyan}"
     echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
@@ -484,7 +499,7 @@ ddwns(){
       ReadSomthing
       ;;
       5)
-      nmap -A -V -sC --script=vuln  ${host}
+      nmap -A -sC --script=vuln  ${host}
       read -p "${close}" som3th1ng
       ReadSomthing
       ;;
