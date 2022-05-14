@@ -194,7 +194,7 @@ nts(){
       read -p "${close}" som3th1ng
       ;;
       4)
-      `nmap ${host}/24`
+      nmap ${host}/24
       read -p "${close}" som3th1ng
       ;;
       5)
@@ -229,21 +229,20 @@ nps(){
       case ${cmd} in
         1)
         #statements
-        nmap -p ${host}
+        nmap -p ${port} ${host}
         read -p "${close}" som3th1ng
         ;;
         2)
         #statements
-        port_Range
         nmap -p ${portrange} ${host}
         read -p "${close}" som3th1ng
         ;;
         3)
-        `nmap ${host}-20`
+        nmap -F ${host}
         read -p "${close}" som3th1ng
         ;;
         4)
-        `nmap ${host}/24`
+        nmap -p- ${host}
         read -p "${close}" som3th1ng
         ;;
         5)
