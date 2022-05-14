@@ -50,10 +50,10 @@ BLINK="$(printf '\033[5;31m')"
 portsr="1"
 close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
 lastprompt=$(echo "  ${orange}  └──╼${orange}")
-portrange=$(echo "  | Enter Port Range 1-65535: ${green}")
-ipList=$(echo "  | Where is IP List File? : ${green}")
-hostip=$(echo "  | Enter IP Target or Host: ${green}")
-hostport=$(echo "  | Open Port on Target or Host:  ${green}")
+portrange=$(echo "  | Your Port Range 1-65535: ${green}")
+ipList=$(echo "  | Your is IP List File: ${green}")
+hostip=$(echo "  | Your IP Target or Host: ${green}")
+hostport=$(echo "  | Your Port on Target or Host:  ${green}")
 # |
 PromptFun(){
   echo ""
