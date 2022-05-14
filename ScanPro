@@ -56,11 +56,21 @@ hostport=$(echo "  | Open Port on Target or Host:  ${green}")
 # |
 PromptFun(){
   echo ""
-  echo "  ${orange}  ┌──[${CYAN}Anlominus${purple}👽${red}Scan${BLUE}Pro$~${orange}]${cyan}"
-  echo "${lastprompt}"
+  echo "${orange} ┌──[${CYAN}Anlominus${purple}👽${red}Scan${BLUE}Pro$~${orange}]${cyan}"
+  # echo "${lastprompt}"
   # read -p "    └──╼ Enter selection [0-7] > "
 }
 prompt="$(PromptFun)"
+ReadSomthing(){
+  echo "
+$cWall    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓$cWall
+$cWall    ▓  ╔═══════════════════════════════════════╗  ▓$cWall
+$cWall    ▓  ╠═>   Press ENTER for back to Menu   <==║  ▓$cWall
+$cWall    ▓  ╚═══════════════════════════════════════╝  ▓$cWall
+$cWall    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓$cWall"
+  echo -n ""
+  read read_somthing
+}
 ip_List(){
   echo ""
   echo "${blue}  |"
@@ -127,29 +137,43 @@ Menu(){
     echo "      [5] Output formats"
     echo "      [6] NSE Scripting"
     echo "      [7] HTTP info gathering"
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
     echo "      ${prompt}"
-    read cmd
+    read -p " └──╼ Enter selection [0-7] > " cmd
     case ${cmd} in
       1)
       nts
+      ReadSomthing
       ;;
       2)
       nps
+      ReadSomthing
       ;;
       3)
       npst
+      ReadSomthing
       ;;
       4)
       saod
+      ReadSomthing
       ;;
       5)
       nof
+      ReadSomthing
       ;;
       6)
       ddwns
+      ReadSomthing
       ;;
       7)
       hsi
+      ReadSomthing
+      ;;
+      m)
+      Menu
       ;;
       x)
       clear
@@ -175,32 +199,43 @@ nts(){
     echo "     [3] Scan a range of IPs	nmap 192.168.1.1-20"
     echo "     [4] Scan a subnet	nmap 192.168.1.0/24"
     echo "     [5] Scan targets from a text file	nmap -iL list-of-ips.txt"
-    echo ""
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
     echo "      ${prompt}"
-    read cmd
+    read -p " └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
       nmap ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       2)
       #statements
       nmap ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       3)
-      `nmap ${host}-20`
+      nmap ${host}-20
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       4)
       nmap ${host}/24
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       5)
       ip_List
       nmap -iL ${iplist}
       read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      m)
+      Menu
       ;;
       x)
       clear
@@ -223,32 +258,43 @@ nps(){
       echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
       echo "     [3] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
       echo "     [4] Scan all 65535 ports	nmap -p- 192.168.1.1"
-      echo ""
+      echo " "
+      echo "      [m] Main Menu"
+      echo "      [x] Exit"
+      echo " "
       echo "      ${prompt}"
-      read cmd
+      read -p " └──╼ Enter selection [0-7] > " cmd
       case ${cmd} in
         1)
         #statements
         nmap -p ${port} ${host}
         read -p "${close}" som3th1ng
+        ReadSomthing
         ;;
         2)
         #statements
         nmap -p ${portrange} ${host}
         read -p "${close}" som3th1ng
+        ReadSomthing
         ;;
         3)
         nmap -F ${host}
         read -p "${close}" som3th1ng
+        ReadSomthing
         ;;
         4)
         nmap -p- ${host}
         read -p "${close}" som3th1ng
+        ReadSomthing
         ;;
         5)
         ip_List
         nmap -iL ${iplist}
         read -p "${close}" som3th1ng
+        ReadSomthing
+        ;;
+        m)
+        Menu
         ;;
         x)
         clear
@@ -274,27 +320,37 @@ npst(){
     echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
     echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
     echo "     [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
-    echo ""
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
     echo "      ${prompt}"
-    read cmd
+    read -p " └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
       nmap -sT ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       2)
       #statements
       nmap -sS ${portrange} ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       3)
-      `nmap -sU -p ${host}`
+      nmap -sU -p ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       4)
       nmap -Pn -F ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      m)
+      Menu
       ;;
       x)
       clear
@@ -318,27 +374,37 @@ saod(){
     echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
     echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
     echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
-    echo ""
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
     echo "      ${prompt}"
-    read cmd
+    read -p " └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
       nmap -A ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       2)
       #statements
       nmap -sV ${portrange} ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       3)
       nmap -sV --version 5 ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       4)
       nmap -sV --version 1 ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      m)
+      Menu
       ;;
       x)
       clear
@@ -373,27 +439,37 @@ ddwns(){
     echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
     echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
     echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
-    echo ""
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
     echo "      ${prompt}"
-    read cmd
+    read -p " └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
       nmap -sV -sC ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       2)
       #statements
       nmap --script-help=ssl-heartbleed
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       3)
       nmap -sV -p 443 --script=ssl-heartbleed.nse ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
       ;;
       4)
       nmap -sV --script=smb*  ${host}
       read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      m)
+      Menu
       ;;
       x)
       clear
