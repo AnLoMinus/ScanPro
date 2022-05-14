@@ -256,8 +256,9 @@ nps(){
       echo "${cafe} [#] Nmap Port Selection ${cyan}"
       echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
       echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-      echo "     [3] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
-      echo "     [4] Scan all 65535 ports	nmap -p- 192.168.1.1"
+      echo "     [3] Scan a range of ports	nmap -p 1-%00 192.168.1.1"
+      echo "     [4] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
+      echo "     [5] Scan all 65535 ports	nmap -p- 192.168.1.1"
       echo " "
       echo "      [m] Main Menu"
       echo "      [x] Exit"
@@ -267,29 +268,36 @@ nps(){
       case ${cmd} in
         1)
         #statements
+        echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
         nmap -p ${port} ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
         2)
         #statements
-        nmap -p ${portrange} ${host}
+        echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
+        nmap -p ${port}-100 ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
         3)
-        nmap -F ${host}
+        #statements
+        echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
+        nmap -p ${port}-255 ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
         4)
-        nmap -p- ${host}
+        #statements
+        echo "     [4] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
+        nmap -F ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
         5)
-        ip_List
-        nmap -iL ${iplist}
+        #statements
+        echo "     [5] Scan all 65535 ports	nmap -p- 192.168.1.1"
+        nmap -p- ${host}
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
