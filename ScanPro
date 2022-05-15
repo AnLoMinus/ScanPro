@@ -48,7 +48,6 @@ RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 # |
 Version="v1.0.0.7"
-host="172.0.0.1"
 portsr="1"
 close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
 hostip=$(echo "      [${green}?${orange}]   Enter IP Target/Host: ${green}")
@@ -182,13 +181,10 @@ your_choice(){
   if  [ -n ${namefile} ] ; then
     log_Path="ScanProLog/ScanProX.log"
   fi
-  if  [ -n ${host} ] ; then
-    host="127.0.0.1"
-  fi
   echo "${cyan}          |"
   echo "${cyan}          |${green} [#] ${cyan}Target Information"
   echo "${cyan}          |-----------------------------"
-  echo "${cyan}          |${green} [!] ${cafe}IP/Host Target:${orange} $host"
+  echo "${cyan}          |${green} [!] ${cafe}IP/Host Target:${orange} ${host}"
   echo "${cyan}          |${green} [!] ${cafe}Port Target:${orange} $port"
   echo "${cyan}          |${green} [!] ${cafe}Log OutPut Location:${orange} $log_Path"
   echo "${cyan}          |-----------------------------------------------"
@@ -199,7 +195,7 @@ your_choice(){
 prcscn(){
   clear
   echo "${yellow}\n[!] Scanning: ${cyan}${IP_TARGET}${yellow} [ Please Wait ]\n"
-  echo
+  echo " "
 }
 # Menu Contents
 Menu(){
@@ -221,12 +217,14 @@ Menu(){
     echo "              [5] Output formats"
     echo "              [6] NSE Scripting"
     echo "              [7] HTTP info gathering"
+    echo "              [8] Timing and Performance"
     echo "         "
     echo "              [m] Main Menu"
     echo "              [x] Exit"
     echo " "
     echo "      ${prompt}"
     read -p "        └──╼ Enter selection [0-7] > " cmd
+    echo " "
     case ${cmd} in
       1)
       nts
@@ -254,6 +252,10 @@ Menu(){
       ;;
       7)
       hsi
+      ReadSomthing
+      ;;
+      8)
+      timing
       ReadSomthing
       ;;
       m)
@@ -290,7 +292,7 @@ nts(){
     echo "      [x] Exit"
     echo " "
     echo "      ${prompt}"
-    read -p " └──╼ Enter selection [0-4] > " cmd
+    read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
@@ -429,7 +431,7 @@ npst(){
     echo "      [x] Exit"
     echo " "
     echo "      ${prompt}"
-    read -p " └──╼ Enter selection [0-4] > " cmd
+    read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
@@ -490,7 +492,7 @@ saod(){
     echo "      [x] Exit"
     echo " "
     echo "      ${prompt}"
-    read -p " └──╼ Enter selection [0-4] > " cmd
+    read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
@@ -568,7 +570,7 @@ ddwns(){
     echo "      [x] Exit"
     echo " "
     echo "      ${prompt}"
-    read -p " └──╼ Enter selection [0-4] > " cmd
+    read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
       1)
       #statements
@@ -622,7 +624,7 @@ echo ""
 }
 #7 HTTP Service Information
 hsi(){
-while true; do
+  while true; do
   #statements
   clear
   your_choice
@@ -637,7 +639,7 @@ while true; do
   echo "      [x] Exit"
   echo " "
   echo "      ${prompt}"
-  read -p " └──╼ Enter selection [0-4] > " cmd
+  read -p "        └──╼ Enter selection [0-4] > " cmd
   case ${cmd} in
     1)
     #statements
@@ -672,5 +674,86 @@ while true; do
 done
 echo ""
 }
+#8 HTTP Service Information
+timing(){
+  while true; do
+    #statements
+    clear
+    your_choice
+    #statements
+    echo ""
+    echo "${cafe} [8] Timing and Performance ${cyan}"
+    echo ""
+    echo "     [0] Paranoid (0) Intrusion Detection System evasion"
+    echo "     [1] Sneaky (1) Intrusion Detection System evasion"
+    echo "     [2] Polite (2) slows down the scan to use less bandwidth and use less target machine resources"
+    echo "     [3] Normal (3) which is default speed"
+    echo "     [4] Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network"
+    echo "     [5] Insane (5) speeds scan; assumes you are on an extraordinarily fast network"
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
+    echo "      ${prompt}"
+    read -p "        └──╼ Enter selection [0-4] > " cmd
+    case ${cmd} in
+      0)
+      #statements
+      echo "     [0] Paranoid (0) Intrusion Detection System evasion"
+      nmap ${iplist} -T0
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      1)
+      #statements
+      echo "     [1] Sneaky (1) Intrusion Detection System evasion"
+      nmap ${iplist} -T1
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      2)
+      echo "     [2] Polite (2) slows down the scan to use less bandwidth and use less target machine resources"
+      nmap ${iplist} -T2
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      3)
+      echo "     [3] Normal (3) which is default speed"
+      nmap ${iplist} -T3
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      4)
+      echo "     [4] Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network"
+      ip_List
+      nmap ${iplist} -T4
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      5)
+      echo "     [5] Insane (5) speeds scan; assumes you are on an extraordinarily fast network"
+      ip_List
+      nmap ${iplist} -T5
+      read -p "${close}" som3th1ng
+      ReadSomthing
+      ;;
+      m)
+      Menu
+      ;;
+      x)
+      clear
+      exit
+      ;;
+      *)
+      echo "Invalid entry."
+      sleep 0.3
+      ;;
+    esac
+  done
+  # Timing and Performance
+  nmap nmap 192.168.1.1 -T0
+
+}
+
 
 Menu

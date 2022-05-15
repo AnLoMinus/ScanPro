@@ -1,0 +1,72 @@
+#!/bin/sh
+# Name : ScanPro
+# Date : May 2022
+Help
+All OS
+nmap Help
+Target nmap {target} Host name ‐ FILESERVER FQDN ‐ scanme.nmap.org
+IP ‐ 192.168.1.1
+IPs ‐ 192.168.1.1 192.168.1.2 Range ‐ 192.168.1.1‐50
+CIDR ‐ 192.168.1.1/24
+DNS CIDR ‐ nmap.org/24
+Ports nmap ‐p nmap ‐p 80
+nmap ‐p 21‐3389
+nmap ‐sU ‐p 1‐1000
+nmap ‐sS ‐sU ‐p T:21‐25,80,U:53‐389 nmap ‐F
+
+Service/Version Detection
+nmap ‐sV App & Service Versions nmap ‐A Aggressive / Advanced nmap ‐‐version‐intensity <level>
+Output (e.g. nmap ‐oN <filename>)
+nmap ‐h
+nmap ‐V
+nmap ‐‐script‐help <script name> Linux/Unix
+man nmap
+man zenmap
+
+Nmap Basics ‐ One Page Cheat Sheet
+Nmap Command Format: nmap [Scan Type(s)] [Options] {target}
+Nmap Script Scan Format: nmap ‐‐script [Script(s) Name] {target}
+Same as above Version information
+ nmap Man Page Zenmap Man Page
+Scan Techniques
+nmap ‐sS nmap ‐sT nmap ‐sU nmap ‐sO
+Host Discovery
+nmap ‐ sL nmap ‐sn nmap ‐Pn
+
+OS Discovery
+nmap ‐O
+nmap ‐O ‐‐osscan‐guess Will guess, Gives % certainty nmap ‐‐script smb‐host‐discovery
+NSE Script Scans (located in Nmap directory \scripts)
+nmap ‐sC Scans with all scripts labeled default nmap ‐‐script <category>
+nmap ‐‐script <script name>
+
+Timing and Performance (time in ms, s, h)
+nmap ‐T0
+nmap ‐T1
+nmap ‐T2
+nmap ‐T3
+nmap ‐T4
+nmap ‐T5
+nmap ‐‐host‐timeout <time> nmap ‐‐scan‐delay <time> nmap ‐‐min‐rate <# packets>
+‐6
+‐D <decoy> ‐f <val>
+‐S <ip>
+‐g <#>
+
+IPv6 scanning (put first) Decoy cloaking Fragment packets Spoof source
+Use source port
+TCP SYN port scan (Default) TCP Full‐connect port scan UDP port scan
+IP Protocol scan
+List scan. Reverse DNS lookup.
+Ping scan/sweep. Doesn't scan ports. No ping scan. Only scans ports.
+
+Basic operating system discovery
+nmap ‐oN nmap ‐oX nmap ‐oG nmap ‐oA nmap ‐v nmap ‐d
+
+Normal output to file XML output to file Grepable output to file Three output formats More detail
+Debugging information
+Paranoid. IDS evasion, very slow. Sneaky. IDS evasion, slow.
+Polite. Use if machines or network slow Default. If using, just leave off. Aggressive. Fast, assumes fast network Insane. Very fast, less accurate results
+Misc. Options & IDS/Firewall Evasion
+Give up on target after this amount of time Adjust delay between probes
+Send packets no slower than this per second
