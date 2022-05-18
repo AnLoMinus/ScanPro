@@ -31,7 +31,7 @@ ScanPro - Nmap Menu Scanning
 
 # TODO / Check List List
 - add Function: 
-    - Export Beutify Log Report
+    - [ ] Export Beutify Log Report
 ---
 ## Inspired by
 - [DracNmap](https://github.com/screetsec/Dracnmap)
