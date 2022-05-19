@@ -48,7 +48,7 @@ RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 # |
 Version="v1.0.0.7"
-portsr="1"
+portsr="0"
 close=$(echo "${yellow}\n\t\tPress ${cyan}Enter ${yellow}to go Back \n")
 hostip=$(echo "      [${green}?${orange}]   Enter IP Target/Host: ${green}")
 ipList=$(echo "      [${green}?${orange}]   Your is IP List File: ${green}")
@@ -372,7 +372,7 @@ nps(){
         2)
         #statements
         echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-        nmap -p ${portsr}-100 ${host}
+        nmap -Pn ${host} -p $portsr-100 
         read -p "${close}" som3th1ng
         ReadSomthing
         ;;
