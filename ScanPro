@@ -280,7 +280,7 @@ nts(){
     your_choice
     #statements
     echo ""
-    echo "${cafe} [#] Nmap Target Selection ${cyan}"
+    echo "${cafe} [1] Nmap Target Selection ${cyan}"
     echo ""
     echo "     [1] Scan a single IP	nmap 192.168.1.1"
     echo "     [2] Scan a host	nmap www.testhostname.com"
@@ -349,7 +349,7 @@ nps(){
       your_choice
       #statements
       echo ""
-      echo "${cafe} [#] Nmap Port Selection ${cyan}"
+      echo "${cafe} [2] Nmap Port Selection ${cyan}"
       echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
       echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
       echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
@@ -421,7 +421,7 @@ npst(){
     your_choice
     #statements
     echo ""
-    echo "${cafe} [#] Nmap Port Scan types ${cyan}"
+    echo "${cafe} [3] Nmap Port Scan types ${cyan}"
     echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
     echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
     echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
@@ -481,7 +481,7 @@ saod(){
     your_choice
     #statements
     echo ""
-    echo "${cafe} [#] Service and OS Detection ${cyan}"
+    echo "${cafe} [4] Service and OS Detection ${cyan}"
     echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
     echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
     echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
@@ -544,7 +544,7 @@ echo ""
 #5 Nmap Output Formats
 nof(){
 echo ""
-echo "${cafe} [#] Nmap Output Formats ${cyan}"
+echo "${cafe} [5] Nmap Output Formats ${cyan}"
 echo "     [1] Save default output to file	nmap -oN outputfile.txt 192.168.1.1"
 echo "     [2] Save results as XML	nmap -oX outputfile.xml 192.168.1.1"
 echo "     [3] Save results in a format for grep	nmap -oG outputfile.txt 192.168.1.1"
@@ -559,7 +559,7 @@ ddwns(){
     your_choice
     #statements
     echo ""
-    echo "${cafe} [#] Digging deeper with NSE Scripts ${cyan}"
+    echo "${cafe} [6] Digging deeper with NSE Scripts ${cyan}"
     echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
     echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
     echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
@@ -751,7 +751,6 @@ timing(){
     esac
   done
   # Timing and Performance
-  nmap nmap 192.168.1.1 -T0
 
 }
 
