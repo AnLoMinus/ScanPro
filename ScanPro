@@ -298,33 +298,33 @@ nts(){
       #statements
       echo "     [1] Scan a single IP	nmap 192.168.1.1"
       nmap ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       2)
       #statements
       echo "     [2] Scan a host	nmap www.testhostname.com"
       nmap ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       3)
       echo "     [3] Scan a range of IPs	nmap 192.168.1.1-20"
       nmap ${host}-20
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       4)
       echo "     [4] Scan a subnet	nmap 192.168.1.0/24"
       nmap ${host}/24
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       5)
       echo "     [5] Scan targets from a text file	nmap -iL list-of-ips.txt"
       ip_List
       nmap -iL ${iplist}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       m)
@@ -366,35 +366,35 @@ nps(){
         #statements
         echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
         nmap -p ${portsr} ${host}
-        read -p "${close}" som3th1ng
+
         ReadSomthing
         ;;
         2)
         #statements
         echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-        nmap -Pn ${host} -p $portsr-100 
-        read -p "${close}" som3th1ng
+        nmap -Pn ${host} -p $portsr-100
+
         ReadSomthing
         ;;
         3)
         #statements
         echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
         nmap -p ${portsr}-255 ${host}
-        read -p "${close}" som3th1ng
+
         ReadSomthing
         ;;
         4)
         #statements
         echo "     [4] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
         nmap -F ${host}
-        read -p "${close}" som3th1ng
+
         ReadSomthing
         ;;
         5)
         #statements
         echo "     [5] Scan all 65535 ports	nmap -p- 192.168.1.1"
         nmap -p- ${host}
-        read -p "${close}" som3th1ng
+
         ReadSomthing
         ;;
         m)
@@ -437,26 +437,26 @@ npst(){
       #statements
       echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
       nmap -sT ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       2)
       #statements
       echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
       nmap -sS ${portrange} ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       3)
       echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
       nmap -sU -p ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       4)
       echo "     [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
       nmap -Pn -F ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       m)
@@ -498,32 +498,32 @@ saod(){
       #statements
       echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
       nmap -A ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       2)
       #statements
       echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
       nmap -sV ${portrange} ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       3)
       echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
       nmap -sV --version 5 ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       4)
       echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
       nmap -sV --version 1 ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       5)
       echo "     [5] Detect OS nmap -O 192.168.1.1"
       nmap -O ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       m)
@@ -576,35 +576,35 @@ ddwns(){
       #statements
       echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
       nmap -sV -sC ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       2)
       #statements
       echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
       nmap --script-help=ssl-heartbleed
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       3)
       #statements
       echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
       nmap -sV -p 443 --script=ssl-heartbleed.nse ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       4)
       #statements
       echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
       nmap -sV --script=smb*  ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       5)
       #statements
       echo "     [5] Vulnerability Script	nmap -sV --script=vuln 192.168.1.1"
       nmap -A -sC --script=vuln  ${host}
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       m)
@@ -645,21 +645,21 @@ hsi(){
     #statements
     echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
     nmap --script=http-title ${host}/24
-    read -p "${close}" som3th1ng
+
     ReadSomthing
     ;;
     2)
     #statements
     echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
     nmap --script=http-header ${host}/24
-    read -p "${close}" som3th1ng
+
     ReadSomthing
     ;;
     3)
     #statements
     echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
     nmap --script=http-enum ${host}/24
-    read -p "${close}" som3th1ng
+
     ReadSomthing
     ;;
     x)
@@ -701,40 +701,40 @@ timing(){
       #statements
       echo "     [0] Paranoid (0) Intrusion Detection System evasion"
       nmap ${iplist} -T0
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       1)
       #statements
       echo "     [1] Sneaky (1) Intrusion Detection System evasion"
       nmap ${iplist} -T1
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       2)
       echo "     [2] Polite (2) slows down the scan to use less bandwidth and use less target machine resources"
       nmap ${iplist} -T2
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       3)
       echo "     [3] Normal (3) which is default speed"
       nmap ${iplist} -T3
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       4)
       echo "     [4] Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network"
       ip_List
       nmap ${iplist} -T4
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       5)
       echo "     [5] Insane (5) speeds scan; assumes you are on an extraordinarily fast network"
       ip_List
       nmap ${iplist} -T5
-      read -p "${close}" som3th1ng
+
       ReadSomthing
       ;;
       m)
