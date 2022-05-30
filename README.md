@@ -38,3 +38,4 @@ ScanPro - Nmap Menu Scanning
 ---
 ## Inspired by
 - [DracNmap](https://github.com/screetsec/Dracnmap)
+- [NmapAutomator](https://github.com/21y4d/nmapAutomator)
