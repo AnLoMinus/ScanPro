@@ -14,20 +14,21 @@ ScanPro - Nmap Menu Scanning
     
 ## Start
 - `sh ScanPro`
+- [x] Ask for IP Target: 
+- [x] Ask for PORT Target: 
+- [x] Ask for location OutPut Log: 
+
 - [#] ScanPro Menu  
     - [x] [1] Target Selection
-        - [x] Ask for IP Target: 
-        - [x] Ask for PORT Target: 
-        - [x] Ask for location OutPut Log: 
-    - [2] Port Selection
-    - [3] Scan Types
-    - [4] Service and Operating System Detection
-    - [5] Output formats
-    - [6] NSE Scripting
-    - [7] HTTP info gathering
+    - [x] [2] Port Selection
+    - [x] [3] Scan Types
+    - [x] [4] Service and Operating System Detection
+    - [x] [5] Output formats
+    - [x] [6] NSE Scripting
+    - [x] [7] HTTP info gathering
 
-    - [m] Main Menu
-    - [x] Exit
+    - [x] [m] Main Menu
+    - [x] [x] Exit
 
 
 ┌──[Anlominus👽ScanPro$~]  
