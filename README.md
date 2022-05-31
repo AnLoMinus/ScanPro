@@ -15,7 +15,10 @@ ScanPro - Nmap Menu Scanning
 ## Start
 - `sh ScanPro`
 - [#] ScanPro Menu  
-    - [1] Target Selection
+    - [x] [1] Target Selection
+        - [x] Ask for IP Target: 
+        - [x] Ask for PORT Target: 
+        - [x] Ask for location OutPut Log: 
     - [2] Port Selection
     - [3] Scan Types
     - [4] Service and Operating System Detection
