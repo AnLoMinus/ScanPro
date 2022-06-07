@@ -14,7 +14,7 @@ ScanPro - Nmap Menu Scanning
 
 ---
 
-<h1> Feel free to sponsor me for the maintenance of the tool: <a href="https://github.com/Anlominus/HacKingPro">HacKingPro</a> </h1>
+<h1> Feel free to sponsor me for the maintenance of the tool: <a href="https://github.com/Anlominus/ScanPro">ScanPro</a> </h1>
 
 ---
     
