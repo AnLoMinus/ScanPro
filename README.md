@@ -11,6 +11,12 @@ ScanPro - Nmap Menu Scanning
 <img width="584" alt="image" src="https://user-images.githubusercontent.com/51442719/168449232-8355cb78-e687-4611-813e-c4f66ba03754.png">
 
 </div>
+
+---
+
+<h1> Feel free to sponsor me for the maintenance of the tool: <a href="https://github.com/Anlominus/HacKingPro">HacKingPro</a> </h1>
+
+---
     
 ## Start
 - `sh ScanPro`
