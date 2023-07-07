@@ -26,6 +26,10 @@
 <div align="center">
 
 # [ScanPro](https://github.com/Anlominus/ScanPro) `BETA`
+
+```shell
+git clone https://github.com/AnLoMinus/ScanPro; cd scanpro/; chmod +x ScanPro; ./ScanPro
+```
     
   <a href=""><br><img title="Made in ISRAEL" src="https://img.shields.io/badge/MADE%20IN-ISRAEL-blue?style=for-the-badge"></a>
 
