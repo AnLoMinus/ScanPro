@@ -58,7 +58,7 @@ lastprompt=$(echo "      [${green}?${orange}]  ${orange}  └──╼${orange}"
 log_report=$(echo "      [${green}?${orange}]   Enter Location for OutPut Log:  ${green}")
 
 # |
-scanPro_Banner(){
+scanPro_Banner() {
   echo " "
   echo ${green}"    █████████                                ███████████                    "
   echo "   ███░░░░░███                              ░░███░░░░░███                   "
@@ -71,44 +71,7 @@ scanPro_Banner(){
 }
 scanPro_Banner
 # |
-scanPro_Icon(){
-  echo $red ""
-  echo "        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░                             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░"
-  echo "        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░                             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░"
-  echo "        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░                             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░"
-  echo "        ▓▓▓▓▓                        ▓▓▓                       ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓                        ▓▓▓                       ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓                        ▓▓▓                       ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓                ▒▓▓▓▓▓  ▓▓▓  ▓▓▓▓▓▒               ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓             ▓▓▓▓▓▓▓▓▓  ▓▓▓  ▓▓▓▓▓▓▓▓░            ░▓▓▓▓░"
-  echo "                        ▓▓▓▓▓▓▓▓▓           ▓▓▓▓▓▓▓▓▓                "
-  echo "                      ▓▓▓▓▓▓▓▓    ▓▓▓▓▓▓▓▓░    ▓▓▓▓▓▓▓▒              "
-  echo "                     ▓▓▓▓▓▓    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ▒▓▓▓▓▓▓             "
-  echo "                    ▓▓▓▓▓▓   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ▓▓▓▓▓▓            "
-  echo "                   ▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓░           "
-  echo "                   ▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░  ▓▓▓▓▓           "
-  echo "                          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  "
-  echo "             ▓▓▓▓▓▓▓▓▓▓░  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓░     "
-  echo "                          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  "
-  echo "                   ▓▓▓▓▓  ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ▓▓▓▓▓           "
-  echo "                   ▓▓▓▓▓▓  ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▒           "
-  echo "                    ▓▓▓▓▓▓   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ▓▓▓▓▓▓            "
-  echo "                     ▓▓▓▓▓▓▒   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ▒▓▓▓▓▓▓             "
-  echo "                      ░▓▓▓▓▓▓▒    ░▓▓▓▓▓▓░     ▓▓▓▓▓▓▓▓              "
-  echo "                        ▓▓▓▓▓▓▓▓▓▓         ▓▓▓▓▓▓▓▓▓░                "
-  echo "        ▓▓▓▓▓             ▒▓▓▓▓▓▓▓▓  ▓▓▓  ▓▓▓▓▓▓▓▓▓            ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓                 ▓▓▓▓▓  ▓▓▓  ▓▓▓▓▓                ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓                        ▓▓▓                       ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓                        ▓▓▓                       ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓░                       ▓▓▓                       ░▓▓▓▓░"
-  echo "        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░                             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░"
-  echo "        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░                             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░"
-  echo "        ░░░░░░░░░░░░░░░                              ░░░░░░░░░░░░░░░ "
-  echo ""
-}
-scanPro_Icon
-# |
-scanPro_About(){
+scanPro_About() {
   echo $green"        =========================================================    "
   echo $cyan"          Script by             $white":" $orange Leon Yaakobov ( #AnLoMinus ) "
   echo $cyan"          Version               $white":" $orange $Version  "
@@ -118,12 +81,12 @@ scanPro_About(){
 }
 scanPro_About
 # |
-PromptFun(){
+PromptFun() {
   echo ""
   echo "${orange}        ┌──[${CYAN}Anlominus${purple}👽${red}Scan${BLUE}Pro$~${orange}]${cyan}"
 }
 prompt="$(PromptFun)"
-ReadSomthing(){
+ReadSomthing() {
   echo "
 $cWall    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓$cWall
 $cWall    ▓  ╔═══════════════════════════════════════╗  ▓$cWall
@@ -134,39 +97,39 @@ $cWall    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓�
   read read_somthing
 }
 # Basic Information
-choose_Target(){
-  ip_List(){
+choose_Target() {
+  ip_List() {
     echo "      ${red}  |"
     echo "      ${cyan}  |---------------------------------"
     read -p "${ipList} " iplist
     echo "      ${cyan}  |---------------------------------"
     echo "      ${red}  |"
   }
-  port_Range(){
+  port_Range() {
     echo "      ${red}  |"
     echo "      ${cyan}  |---------------------------------"
-    read -p  " ${portrange}" portrange
-    echo "      ${cyan}  |---------------------------------"
-    echo "      ${red}  |"
-  }
-  What_IP(){
-    echo "      ${red}  |"
-    echo "      ${cyan}  |---------------------------------"
-    read -p  " ${hostip}" host
+    read -p " ${portrange}" portrange
     echo "      ${cyan}  |---------------------------------"
     echo "      ${red}  |"
   }
-  What_PORT(){
+  What_IP() {
     echo "      ${red}  |"
     echo "      ${cyan}  |---------------------------------"
-    read -p  " ${hostport}" port
+    read -p " ${hostip}" host
     echo "      ${cyan}  |---------------------------------"
     echo "      ${red}  |"
   }
-  what_LogPath(){
+  What_PORT() {
     echo "      ${red}  |"
     echo "      ${cyan}  |---------------------------------"
-    read -p  " ${log_report}" namefile
+    read -p " ${hostport}" port
+    echo "      ${cyan}  |---------------------------------"
+    echo "      ${red}  |"
+  }
+  what_LogPath() {
+    echo "      ${red}  |"
+    echo "      ${cyan}  |---------------------------------"
+    read -p " ${log_report}" namefile
     echo "      ${cyan}  |---------------------------------"
     echo "      ${red}  |"
   }
@@ -177,8 +140,8 @@ choose_Target(){
 
 }
 choose_Target
-your_choice(){
-  if  [ -n ${namefile} ] ; then
+your_choice() {
+  if [ -n ${namefile} ]; then
     log_Path="ScanProLog/ScanProX.log"
   fi
   echo "${cyan}          |"
@@ -192,13 +155,13 @@ your_choice(){
   echo "${cyan}          |"
   echo $green"        =========================================================    "
 }
-prcscn(){
+prcscn() {
   clear
   echo "${yellow}\n[!] Scanning: ${cyan}${IP_TARGET}${yellow} [ Please Wait ]\n"
   echo " "
 }
 # Menu Contents
-Menu(){
+Menu() {
   while true; do
     #statements
     clear
@@ -226,46 +189,46 @@ Menu(){
     read -p "        └──╼ Enter selection [0-7] > " cmd
     echo " "
     case ${cmd} in
-      1)
+    1)
       nts
       ReadSomthing
       ;;
-      2)
+    2)
       nps
       ReadSomthing
       ;;
-      3)
+    3)
       npst
       ReadSomthing
       ;;
-      4)
+    4)
       saod
       ReadSomthing
       ;;
-      5)
+    5)
       nof
       ReadSomthing
       ;;
-      6)
+    6)
       ddwns
       ReadSomthing
       ;;
-      7)
+    7)
       hsi
       ReadSomthing
       ;;
-      8)
+    8)
       timing
       ReadSomthing
       ;;
-      m)
+    m)
       Menu
       ;;
-      x)
+    x)
       clear
       break
       ;;
-      *)
+    *)
       echo "Invalid entry."
       sleep 0.3
       ;;
@@ -273,7 +236,7 @@ Menu(){
   done
 }
 #1 Nmap Target Selection
-nts(){
+nts() {
   while true; do
     #statements
     clear
@@ -294,47 +257,47 @@ nts(){
     echo "      ${prompt}"
     read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
-      1)
+    1)
       #statements
       echo "     [1] Scan a single IP	nmap 192.168.1.1"
       nmap ${host}
 
       ReadSomthing
       ;;
-      2)
+    2)
       #statements
       echo "     [2] Scan a host	nmap www.testhostname.com"
       nmap ${host}
 
       ReadSomthing
       ;;
-      3)
+    3)
       echo "     [3] Scan a range of IPs	nmap 192.168.1.1-20"
       nmap ${host}-20
 
       ReadSomthing
       ;;
-      4)
+    4)
       echo "     [4] Scan a subnet	nmap 192.168.1.0/24"
       nmap ${host}/24
 
       ReadSomthing
       ;;
-      5)
+    5)
       echo "     [5] Scan targets from a text file	nmap -iL list-of-ips.txt"
       ip_List
       nmap -iL ${iplist}
 
       ReadSomthing
       ;;
-      m)
+    m)
       Menu
       ;;
-      x)
+    x)
       clear
       exit
       ;;
-      *)
+    *)
       echo "Invalid entry."
       sleep 0.3
       ;;
@@ -342,79 +305,79 @@ nts(){
   done
 }
 #2 Nmap Port Selection
-nps(){
-    while true; do
+nps() {
+  while true; do
+    #statements
+    clear
+    your_choice
+    #statements
+    echo ""
+    echo "${cafe} [2] Nmap Port Selection ${cyan}"
+    echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
+    echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
+    echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
+    echo "     [4] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
+    echo "     [5] Scan all 65535 ports	nmap -p- 192.168.1.1"
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
+    echo "      ${prompt}"
+    read -p " └──╼ Enter selection [0-7] > " cmd
+    case ${cmd} in
+    1)
       #statements
-      clear
-      your_choice
-      #statements
-      echo ""
-      echo "${cafe} [2] Nmap Port Selection ${cyan}"
       echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
+      nmap -p ${portsr} ${host}
+
+      ReadSomthing
+      ;;
+    2)
+      #statements
       echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
+      nmap -Pn ${host} -p $portsr-100
+
+      ReadSomthing
+      ;;
+    3)
+      #statements
       echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
+      nmap -p ${portsr}-255 ${host}
+
+      ReadSomthing
+      ;;
+    4)
+      #statements
       echo "     [4] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
+      nmap -F ${host}
+
+      ReadSomthing
+      ;;
+    5)
+      #statements
       echo "     [5] Scan all 65535 ports	nmap -p- 192.168.1.1"
-      echo " "
-      echo "      [m] Main Menu"
-      echo "      [x] Exit"
-      echo " "
-      echo "      ${prompt}"
-      read -p " └──╼ Enter selection [0-7] > " cmd
-      case ${cmd} in
-        1)
-        #statements
-        echo "     [1] Scan a single Port	nmap -p 22 192.168.1.1"
-        nmap -p ${portsr} ${host}
+      nmap -p- ${host}
 
-        ReadSomthing
-        ;;
-        2)
-        #statements
-        echo "     [2] Scan a range of ports	nmap -p 1-100 192.168.1.1"
-        nmap -Pn ${host} -p $portsr-100
-
-        ReadSomthing
-        ;;
-        3)
-        #statements
-        echo "     [3] Scan a range of ports	nmap -p 1-500 192.168.1.1"
-        nmap -p ${portsr}-255 ${host}
-
-        ReadSomthing
-        ;;
-        4)
-        #statements
-        echo "     [4] Scan 100 most common ports (Fast)	nmap -F 192.168.1.1"
-        nmap -F ${host}
-
-        ReadSomthing
-        ;;
-        5)
-        #statements
-        echo "     [5] Scan all 65535 ports	nmap -p- 192.168.1.1"
-        nmap -p- ${host}
-
-        ReadSomthing
-        ;;
-        m)
-        Menu
-        ;;
-        x)
-        clear
-        exit
-        ;;
-        *)
-        echo "Invalid entry."
-        sleep 0.3
-        ;;
-      esac
-    done
-echo ""
-echo ""
+      ReadSomthing
+      ;;
+    m)
+      Menu
+      ;;
+    x)
+      clear
+      exit
+      ;;
+    *)
+      echo "Invalid entry."
+      sleep 0.3
+      ;;
+    esac
+  done
+  echo ""
+  echo ""
 }
 #3 Nmap Port Scan types
-npst(){
+npst() {
   while true; do
     #statements
     clear
@@ -433,40 +396,40 @@ npst(){
     echo "      ${prompt}"
     read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
-      1)
+    1)
       #statements
       echo "     [1] Scan using TCP connect	nmap -sT 192.168.1.1"
       nmap -sT ${host}
 
       ReadSomthing
       ;;
-      2)
+    2)
       #statements
       echo "     [2] Scan using TCP SYN scan (default)	nmap -sS 192.168.1.1"
       nmap -sS ${portrange} ${host}
 
       ReadSomthing
       ;;
-      3)
+    3)
       echo "     [3] Scan UDP ports	nmap -sU -p 123,161,162 192.168.1.1"
       nmap -sU -p ${host}
 
       ReadSomthing
       ;;
-      4)
+    4)
       echo "     [4] Scan selected ports - ignore discovery	nmap -Pn -F 192.168.1.1"
       nmap -Pn -F ${host}
 
       ReadSomthing
       ;;
-      m)
+    m)
       Menu
       ;;
-      x)
+    x)
       clear
       exit
       ;;
-      *)
+    *)
       echo "Invalid entry."
       sleep 0.3
       ;;
@@ -474,7 +437,7 @@ npst(){
   done
 }
 #4 Service and OS Detection
-saod(){
+saod() {
   while true; do
     #statements
     clear
@@ -494,65 +457,65 @@ saod(){
     echo "      ${prompt}"
     read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
-      1)
+    1)
       #statements
       echo "     [1] Detect OS and Services	nmap -A 192.168.1.1"
       nmap -A ${host}
 
       ReadSomthing
       ;;
-      2)
+    2)
       #statements
       echo "     [2] Standard service detection	nmap -sV 192.168.1.1"
       nmap -sV ${portrange} ${host}
 
       ReadSomthing
       ;;
-      3)
+    3)
       echo "     [3] More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1"
       nmap -sV --version 5 ${host}
 
       ReadSomthing
       ;;
-      4)
+    4)
       echo "     [4] Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1"
       nmap -sV --version 1 ${host}
 
       ReadSomthing
       ;;
-      5)
+    5)
       echo "     [5] Detect OS nmap -O 192.168.1.1"
       nmap -O ${host}
 
       ReadSomthing
       ;;
-      m)
+    m)
       Menu
       ;;
-      x)
+    x)
       clear
       exit
       ;;
-      *)
+    *)
       echo "Invalid entry."
       sleep 0.3
       ;;
     esac
   done
-echo ""
+  echo ""
 }
 #5 Nmap Output Formats
-nof(){
-echo ""
-echo "${cafe} [5] Nmap Output Formats ${cyan}"
-echo "     [1] Save default output to file	nmap -oN outputfile.txt 192.168.1.1"
-echo "     [2] Save results as XML	nmap -oX outputfile.xml 192.168.1.1"
-echo "     [3] Save results in a format for grep	nmap -oG outputfile.txt 192.168.1.1"
-echo "     [4] Save in all formats	nmap -oA outputfile 192.168.1.1"
-echo ""
+nof() {
+  echo ""
+  echo "${cafe} [5] Nmap Output Formats ${cyan}"
+  echo "     [1] Save default output to file	nmap -oN outputfile.txt 192.168.1.1"
+  echo "     [2] Save results as XML	nmap -oX outputfile.xml 192.168.1.1"
+  echo "     [3] Save results in a format for grep	nmap -oG outputfile.txt 192.168.1.1"
+  echo "     [4] Save in all formats	nmap -oA outputfile 192.168.1.1"
+  echo ""
 }
 #6 Digging deeper with NSE Scripts
-ddwns(){
+ddwns() {
   while true; do
     #statements
     clear
@@ -572,110 +535,110 @@ ddwns(){
     echo "      ${prompt}"
     read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
-      1)
+    1)
       #statements
       echo "     [1] Scan using default safe scripts	nmap -sV -sC 192.168.1.1"
       nmap -sV -sC ${host}
 
       ReadSomthing
       ;;
-      2)
+    2)
       #statements
       echo "     [2] Get help for a script	nmap --script-help=ssl-heartbleed"
       nmap --script-help=ssl-heartbleed
 
       ReadSomthing
       ;;
-      3)
+    3)
       #statements
       echo "     [3] Scan using a specific NSE script	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1"
       nmap -sV -p 443 --script=ssl-heartbleed.nse ${host}
 
       ReadSomthing
       ;;
-      4)
+    4)
       #statements
       echo "     [4] Scan with a set of scripts	nmap -sV --script=smb* 192.168.1.1"
-      nmap -sV --script=smb*  ${host}
+      nmap -sV --script=smb* ${host}
 
       ReadSomthing
       ;;
-      5)
+    5)
       #statements
       echo "     [5] Vulnerability Script	nmap -sV --script=vuln 192.168.1.1"
-      nmap -A -sC --script=vuln  ${host}
+      nmap -A -sC --script=vuln ${host}
 
       ReadSomthing
       ;;
-      m)
+    m)
       Menu
       ;;
-      x)
+    x)
       clear
       exit
       ;;
-      *)
+    *)
       echo "Invalid entry."
       sleep 0.3
       ;;
     esac
   done
-echo ""
+  echo ""
 }
 #7 HTTP Service Information
-hsi(){
+hsi() {
   while true; do
-  #statements
-  clear
-  your_choice
-  #statements
-  echo ""
-  echo "${cafe} [#] HTTP Service Information ${cyan}"
-  echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
-  echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
-  echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
-  echo " "
-  echo "      [m] Main Menu"
-  echo "      [x] Exit"
-  echo " "
-  echo "      ${prompt}"
-  read -p "        └──╼ Enter selection [0-4] > " cmd
-  case ${cmd} in
-    1)
     #statements
-    echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
-    nmap --script=http-title ${host}/24
-
-    ReadSomthing
-    ;;
-    2)
-    #statements
-    echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
-    nmap --script=http-header ${host}/24
-
-    ReadSomthing
-    ;;
-    3)
-    #statements
-    echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
-    nmap --script=http-enum ${host}/24
-
-    ReadSomthing
-    ;;
-    x)
     clear
-    exit
-    ;;
+    your_choice
+    #statements
+    echo ""
+    echo "${cafe} [#] HTTP Service Information ${cyan}"
+    echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
+    echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
+    echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
+    echo " "
+    echo "      [m] Main Menu"
+    echo "      [x] Exit"
+    echo " "
+    echo "      ${prompt}"
+    read -p "        └──╼ Enter selection [0-4] > " cmd
+    case ${cmd} in
+    1)
+      #statements
+      echo "     [1] Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24"
+      nmap --script=http-title ${host}/24
+
+      ReadSomthing
+      ;;
+    2)
+      #statements
+      echo "     [2] Get HTTP headers of web services	nmap --script=http-headers 192.168.1.0/24"
+      nmap --script=http-header ${host}/24
+
+      ReadSomthing
+      ;;
+    3)
+      #statements
+      echo "     [3] Find web apps from known paths	nmap --script=http-enum 192.168.1.0/24"
+      nmap --script=http-enum ${host}/24
+
+      ReadSomthing
+      ;;
+    x)
+      clear
+      exit
+      ;;
     *)
-    echo "Invalid entry."
-    sleep 0.3
-    ;;
-  esac
-done
-echo ""
+      echo "Invalid entry."
+      sleep 0.3
+      ;;
+    esac
+  done
+  echo ""
 }
 #8 HTTP Service Information
-timing(){
+timing() {
   while true; do
     #statements
     clear
@@ -697,54 +660,54 @@ timing(){
     echo "      ${prompt}"
     read -p "        └──╼ Enter selection [0-4] > " cmd
     case ${cmd} in
-      0)
+    0)
       #statements
       echo "     [0] Paranoid (0) Intrusion Detection System evasion"
       nmap ${iplist} -T0
 
       ReadSomthing
       ;;
-      1)
+    1)
       #statements
       echo "     [1] Sneaky (1) Intrusion Detection System evasion"
       nmap ${iplist} -T1
 
       ReadSomthing
       ;;
-      2)
+    2)
       echo "     [2] Polite (2) slows down the scan to use less bandwidth and use less target machine resources"
       nmap ${iplist} -T2
 
       ReadSomthing
       ;;
-      3)
+    3)
       echo "     [3] Normal (3) which is default speed"
       nmap ${iplist} -T3
 
       ReadSomthing
       ;;
-      4)
+    4)
       echo "     [4] Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network"
       ip_List
       nmap ${iplist} -T4
 
       ReadSomthing
       ;;
-      5)
+    5)
       echo "     [5] Insane (5) speeds scan; assumes you are on an extraordinarily fast network"
       ip_List
       nmap ${iplist} -T5
 
       ReadSomthing
       ;;
-      m)
+    m)
       Menu
       ;;
-      x)
+    x)
       clear
       exit
       ;;
-      *)
+    *)
       echo "Invalid entry."
       sleep 0.3
       ;;
@@ -753,6 +716,5 @@ timing(){
   # Timing and Performance
 
 }
-
 
 Menu
