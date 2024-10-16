@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScanPro - Landing Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #main {
+            padding: 30px;
+            background: white;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        li::before {
+            content: "🔍";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to ScanPro 🚀</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="main">
+            <h2>Overview 📜</h2>
+            <p>ScanPro is a comprehensive network scanning tool designed for security professionals and enthusiasts. It
+                offers a wide range of scanning options to help identify vulnerabilities and gather detailed information
+                about network hosts. Whether you are conducting a security audit or simply exploring network
+                configurations, ScanPro provides the tools you need to perform thorough and efficient scans.</p>
+
+            <h2>Features 🌟</h2>
+            <ul>
+                <li><strong>Target Selection:</strong> Choose specific IPs, hostnames, or ranges for scanning.</li>
+                <li><strong>Port Selection:</strong> Scan individual ports or ranges to identify open services.</li>
+                <li><strong>Scan Types:</strong> Utilize different scanning techniques such as TCP connect and SYN
+                    scans.</li>
+                <li><strong>Service and OS Detection:</strong> Identify running services and operating systems on target
+                    hosts.</li>
+                <li><strong>Output Formats:</strong> Save scan results in various formats for further analysis.</li>
+                <li><strong>NSE Scripting:</strong> Leverage Nmap Scripting Engine for advanced scanning capabilities.
+                </li>
+                <li><strong>HTTP Info Gathering:</strong> Collect detailed information from HTTP services.</li>
+                <li><strong>Timing and Performance:</strong> Adjust scan speed and performance settings to suit your
+                    network environment.</li>
+            </ul>
+
+            <h2>Usage 🛠️</h2>
+            <p>To get started with ScanPro, simply download the script from our GitHub repository and run it on your
+                preferred terminal. Follow the on-screen prompts to configure your scan settings and view the results.
+                For detailed instructions and examples, visit our GitHub page.</p>
+
+            <a href="https://github.com/AnLoMinus/ScanPro/" class="button">Visit GitHub 🌐</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 ScanPro. All rights reserved. 🌐</p>
+    </footer>
+</body>
+
+</html>
