@@ -4,133 +4,726 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScanPro - Landing Page</title>
+    <title>ScanPro | Web Scanner</title>
     <style>
+        :root {
+            --bg: #0c1117;
+            --card: #111827;
+            --accent: #10b981;
+            --accent-2: #22d3ee;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: #1f2937;
+            --danger: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background: linear-gradient(135deg, #0b1220, #0f172a 40%, #0b1325);
+            color: var(--text);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
         }
 
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+            background: rgba(12, 17, 23, 0.9);
+            border-bottom: 1px solid var(--border);
         }
 
-        .container {
-            width: 80%;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            max-width: 1200px;
             margin: 0 auto;
-            overflow: hidden;
         }
 
-        #main {
-            padding: 30px;
-            background: white;
-            margin-top: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            text-decoration: none;
         }
 
-        h1,
+        .pill {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 10px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 32px auto 64px;
+            padding: 0 24px;
+            display: grid;
+            gap: 24px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(34, 211, 238, 0.06));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+            display: grid;
+            gap: 12px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
         h2 {
-            color: #333;
+            margin: 0 0 12px 0;
+            font-size: 22px;
         }
 
-        p {
-            line-height: 1.8;
-            font-size: 1.1em;
+        .muted {
+            color: var(--muted);
+        }
+
+        form {
+            display: grid;
+            gap: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .options {
+            display: grid;
+            gap: 8px;
+        }
+
+        .option-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: #0b1220;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25);
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, #10b981, #22d3ee);
+        }
+
+        .btn.secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text);
+            box-shadow: none;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .report-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .summary-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .summary-box strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table th {
+            color: var(--muted);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status {
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status.open {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        .status.filtered {
+            background: rgba(234, 179, 8, 0.15);
+            color: #facc15;
+        }
+
+        .status.closed {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+        }
+
+        .history-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .history-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            display: grid;
+            gap: 8px;
+        }
+
+        .history-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .history-meta span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 6px 10px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .history-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         footer {
-            background-color: #333;
-            color: white;
             text-align: center;
-            padding: 15px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 28px 0 36px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            background: rgba(12, 17, 23, 0.8);
         }
 
-        .button {
-            display: inline-block;
-            padding: 12px 25px;
-            margin-top: 15px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
 
-        .button:hover {
-            background-color: #45a049;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin: 10px 0;
-            font-size: 1.1em;
-        }
-
-        li::before {
-            content: "🔍";
-            margin-right: 10px;
+            .report-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <div class="container">
-            <h1>Welcome to ScanPro 🚀</h1>
-        </div>
+        <nav>
+            <a class="logo" href="#">
+                <span style="font-size: 22px;">🛰️</span>
+                <span>ScanPro Web Console</span>
+            </a>
+            <div class="pill">Live scanning, reports & downloads</div>
+        </nav>
     </header>
 
-    <div class="container">
-        <div id="main">
-            <h2>Overview 📜</h2>
-            <p>ScanPro is a comprehensive network scanning tool designed for security professionals and enthusiasts. It
-                offers a wide range of scanning options to help identify vulnerabilities and gather detailed information
-                about network hosts. Whether you are conducting a security audit or simply exploring network
-                configurations, ScanPro provides the tools you need to perform thorough and efficient scans.</p>
+    <main>
+        <section class="hero">
+            <h1>הרצת סריקות כמו באפליקציה – עכשיו בדפדפן</h1>
+            <p>
+                הגדירו מטרות, בחרו סוגי סריקה, הריצו בדיקות עומק והורידו דוחות מפורטים. הכלי באתר נבנה כדי להרגיש כמו
+                ScanPro המקורית ולהציג תוצאות בצורה ברורה, עם אפשרות שיתוף והורדת קבצים.
+            </p>
+            <div class="chips">
+                <div class="chip">🎯 בחירת יעד ופורט</div>
+                <div class="chip">🕵️ זיהוי שירותים ומערכות</div>
+                <div class="chip">📑 דוחות מוכנים להורדה</div>
+                <div class="chip">🌐 HTTP & NSE ready</div>
+            </div>
+        </section>
 
-            <h2>Features 🌟</h2>
-            <ul>
-                <li><strong>Target Selection:</strong> Choose specific IPs, hostnames, or ranges for scanning.</li>
-                <li><strong>Port Selection:</strong> Scan individual ports or ranges to identify open services.</li>
-                <li><strong>Scan Types:</strong> Utilize different scanning techniques such as TCP connect and SYN
-                    scans.</li>
-                <li><strong>Service and OS Detection:</strong> Identify running services and operating systems on target
-                    hosts.</li>
-                <li><strong>Output Formats:</strong> Save scan results in various formats for further analysis.</li>
-                <li><strong>NSE Scripting:</strong> Leverage Nmap Scripting Engine for advanced scanning capabilities.
-                </li>
-                <li><strong>HTTP Info Gathering:</strong> Collect detailed information from HTTP services.</li>
-                <li><strong>Timing and Performance:</strong> Adjust scan speed and performance settings to suit your
-                    network environment.</li>
-            </ul>
+        <section class="card">
+            <div class="two-column" style="align-items: start;">
+                <div>
+                    <h2>הגדרת סריקה</h2>
+                    <p class="muted">בחרו בדיוק את אותם פרופילים וזיהויים שקיימים באפליקציה, כולל HTTP ו-NSE.</p>
+                    <form id="scanForm">
+                        <div>
+                            <label for="target">מטרה (IP / Hostname)</label>
+                            <input type="text" id="target" name="target" placeholder="10.10.10.5 או example.com" required>
+                        </div>
+                        <div>
+                            <label for="ports">טווחי פורטים</label>
+                            <input type="text" id="ports" name="ports" placeholder="1-1024, 443, 8080" value="1-1024">
+                        </div>
+                        <div>
+                            <label for="profile">פרופיל סריקה</label>
+                            <select id="profile" name="profile">
+                                <option value="TCP Connect">TCP Connect</option>
+                                <option value="SYN Stealth">SYN Stealth</option>
+                                <option value="UDP Discovery">UDP Discovery</option>
+                                <option value="Intense">Intense (Service + OS)</option>
+                                <option value="Quick">Quick sweep</option>
+                            </select>
+                        </div>
+                        <div class="options">
+                            <div class="option-row">
+                                <input type="checkbox" id="serviceDetection" checked>
+                                <label for="serviceDetection">Service detection</label>
+                            </div>
+                            <div class="option-row">
+                                <input type="checkbox" id="osDetection" checked>
+                                <label for="osDetection">OS detection</label>
+                            </div>
+                            <div class="option-row">
+                                <input type="checkbox" id="httpInfo" checked>
+                                <label for="httpInfo">HTTP info gathering</label>
+                            </div>
+                            <div>
+                                <label for="nseCategory">NSE category</label>
+                                <select id="nseCategory">
+                                    <option value="default">default</option>
+                                    <option value="vuln">vuln</option>
+                                    <option value="safe">safe</option>
+                                    <option value="discovery">discovery</option>
+                                    <option value="malware">malware</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="output">פורמט דוח</label>
+                            <select id="output">
+                                <option value="txt">TXT</option>
+                                <option value="json">JSON</option>
+                                <option value="html">HTML</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="notes">הערות / מיקוד עסקי</label>
+                            <textarea id="notes" placeholder="דגשים מיוחדים, שימוש לקוח, או מה לבדוק שוב"></textarea>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button type="submit" class="btn primary">🚀 הרצת סריקה</button>
+                            <button type="button" id="resetForm" class="btn secondary">ניקוי שדות</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <div class="report-header">
+                        <div>
+                            <h2>תוצאות חיות ודוחות</h2>
+                            <p class="muted">תצוגה מהירה של כל מה שהסריקה מצאה, עם אפשרות הורדה.</p>
+                        </div>
+                        <button id="downloadReport" class="btn secondary" disabled>⬇️ הורד דוח נוכחי</button>
+                    </div>
+                    <div class="report-grid" id="reportViewer">
+                        <p class="muted">עוד לא נבחרה סריקה להצגה. הריצו או בחרו אחת מהיסטוריית הדוחות.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <h2>Usage 🛠️</h2>
-            <p>To get started with ScanPro, simply download the script from our GitHub repository and run it on your
-                preferred terminal. Follow the on-screen prompts to configure your scan settings and view the results.
-                For detailed instructions and examples, visit our GitHub page.</p>
-
-            <a href="https://github.com/AnLoMinus/ScanPro/" class="button">Visit GitHub 🌐</a>
-        </div>
-    </div>
+        <section class="card">
+            <div class="report-header">
+                <div>
+                    <h2>דוחות להציג ולהוריד</h2>
+                    <p class="muted">כל הסריקות האחרונות עם כפתור צפייה והורדה מיידית.</p>
+                </div>
+            </div>
+            <div class="history-list" id="history"></div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2023 ScanPro. All rights reserved. 🌐</p>
+        © 2024 ScanPro · סריקות, דוחות, והורדה במקום אחד.
     </footer>
+
+    <script>
+        const historyList = document.getElementById('history');
+        const reportViewer = document.getElementById('reportViewer');
+        const downloadButton = document.getElementById('downloadReport');
+
+        const seedReports = [
+            {
+                id: 'example-intense',
+                target: '10.10.10.5',
+                ports: '1-1024',
+                profile: 'Intense (Service + OS)',
+                serviceDetection: true,
+                osDetection: true,
+                httpInfo: true,
+                nseCategory: 'vuln',
+                output: 'txt',
+                notes: 'בדיקת חדירה לרשת הפנימית',
+                startedAt: '2024-05-02T09:12:00Z',
+                duration: '00:01:42',
+                findings: [
+                    { port: '22/tcp', status: 'open', service: 'ssh', detail: 'OpenSSH 8.2p1 Ubuntu 4ubuntu0.7' },
+                    { port: '80/tcp', status: 'open', service: 'http', detail: 'Apache httpd 2.4.52' },
+                    { port: '139/tcp', status: 'open', service: 'netbios-ssn', detail: 'Samba smbd 4.6.2' },
+                    { port: '445/tcp', status: 'open', service: 'microsoft-ds', detail: 'Windows Server 2019' },
+                ],
+            },
+            {
+                id: 'example-web',
+                target: 'scanpro.demo',
+                ports: '80, 443, 8080',
+                profile: 'HTTP Info',
+                serviceDetection: true,
+                osDetection: false,
+                httpInfo: true,
+                nseCategory: 'default',
+                output: 'json',
+                notes: 'בדיקת אתר חיצוני ו-CORS',
+                startedAt: '2024-05-06T14:30:00Z',
+                duration: '00:00:28',
+                findings: [
+                    { port: '80/tcp', status: 'open', service: 'http', detail: 'nginx 1.23, TLS redirect enabled' },
+                    { port: '443/tcp', status: 'open', service: 'https', detail: 'TLS 1.3, HSTS, ALPN http/2' },
+                    { port: '8080/tcp', status: 'filtered', service: 'http-proxy', detail: 'Firewall drop, banner hidden' },
+                ],
+            },
+        ];
+
+        let activeReport = null;
+
+        const formatDate = (iso) => new Date(iso).toLocaleString();
+
+        function generateFindings(profile) {
+            const base = [
+                { port: '22/tcp', service: 'ssh', detail: 'OpenSSH 8.x' },
+                { port: '53/udp', service: 'domain', detail: 'DNS recursion enabled' },
+                { port: '80/tcp', service: 'http', detail: 'Apache 2.4' },
+                { port: '443/tcp', service: 'https', detail: 'TLS 1.2/1.3, ALPN' },
+                { port: '3306/tcp', service: 'mysql', detail: 'MariaDB 10.5' },
+            ];
+
+            return base.map((item, index) => {
+                const statusPool = ['open', 'open', 'filtered', 'closed'];
+                const profileBias = profile.includes('UDP') ? ['open', 'open', 'filtered', 'filtered'] : statusPool;
+                const status = profileBias[(index + Math.floor(Math.random() * profileBias.length)) % profileBias.length];
+                return { ...item, status };
+            });
+        }
+
+        function renderReport(report) {
+            activeReport = report;
+            downloadButton.disabled = false;
+
+            const summaryHtml = `
+                <div class="summary">
+                    <div class="summary-box">
+                        <strong>מטרה</strong>
+                        <span class="muted">${report.target}</span>
+                    </div>
+                    <div class="summary-box">
+                        <strong>פורט</strong>
+                        <span class="muted">${report.ports}</span>
+                    </div>
+                    <div class="summary-box">
+                        <strong>פרופיל</strong>
+                        <span class="muted">${report.profile}</span>
+                    </div>
+                    <div class="summary-box">
+                        <strong>משך</strong>
+                        <span class="muted">${report.duration || '—'}</span>
+                    </div>
+                </div>
+            `;
+
+            const chipsHtml = `
+                <div class="chips">
+                    <div class="chip">Service detection: ${report.serviceDetection ? 'on' : 'off'}</div>
+                    <div class="chip">OS detection: ${report.osDetection ? 'on' : 'off'}</div>
+                    <div class="chip">HTTP info: ${report.httpInfo ? 'on' : 'off'}</div>
+                    <div class="chip">NSE: ${report.nseCategory}</div>
+                    <div class="chip">Output: ${report.output?.toUpperCase?.() || 'TXT'}</div>
+                </div>
+            `;
+
+            const rows = report.findings.map(finding => `
+                <tr>
+                    <td>${finding.port}</td>
+                    <td><span class="status ${finding.status}">${finding.status}</span></td>
+                    <td>${finding.service}</td>
+                    <td class="muted">${finding.detail}</td>
+                </tr>
+            `).join('');
+
+            const notesBlock = report.notes ? `<p class="muted">הערות: ${report.notes}</p>` : '';
+
+            reportViewer.innerHTML = `
+                ${summaryHtml}
+                ${chipsHtml}
+                <div class="card" style="padding: 14px; background: rgba(255,255,255,0.02);">
+                    <div class="report-header" style="margin-bottom: 6px;">
+                        <h3 style="margin: 0;">פורט-שירות</h3>
+                        <span class="muted">${report.findings.length} תוצאות</span>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Port</th>
+                                <th>Status</th>
+                                <th>Service</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                    </table>
+                </div>
+                ${notesBlock}
+            `;
+        }
+
+        function downloadActiveReport() {
+            if (!activeReport) return;
+            const format = activeReport.output || 'txt';
+            let content = '';
+            let mime = 'text/plain';
+            let extension = format.toLowerCase();
+
+            if (format === 'json') {
+                content = JSON.stringify(activeReport, null, 2);
+                mime = 'application/json';
+            } else if (format === 'html') {
+                content = `<!DOCTYPE html><html><body><pre>${JSON.stringify(activeReport, null, 2)}</pre></body></html>`;
+                mime = 'text/html';
+            } else {
+                const rows = activeReport.findings.map(f => `${f.port}\t${f.status}\t${f.service}\t${f.detail}`).join('\n');
+                content = `ScanPro report\nTarget: ${activeReport.target}\nProfile: ${activeReport.profile}\nPorts: ${activeReport.ports}\nNotes: ${activeReport.notes || ''}\n---\n${rows}`;
+                extension = 'txt';
+            }
+
+            const blob = new Blob([content], { type: mime });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `scanpro-${activeReport.target.replace(/\W+/g, '-')}.${extension}`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function renderHistory() {
+            historyList.innerHTML = '';
+            seedReports.slice().reverse().forEach(report => {
+                const card = document.createElement('div');
+                card.className = 'history-card';
+                card.innerHTML = `
+                    <div style="display:flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                        <div>
+                            <strong>${report.target}</strong>
+                            <div class="muted">${report.profile}</div>
+                        </div>
+                        <div class="history-actions">
+                            <button class="btn secondary" data-id="${report.id}" data-action="view">👁️ צפייה</button>
+                            <button class="btn secondary" data-id="${report.id}" data-action="download">⬇️ הורדה</button>
+                        </div>
+                    </div>
+                    <div class="history-meta">
+                        <span>פורט: ${report.ports}</span>
+                        <span>Output: ${report.output.toUpperCase()}</span>
+                        <span>Started: ${formatDate(report.startedAt)}</span>
+                        <span>משך: ${report.duration}</span>
+                    </div>
+                `;
+                historyList.appendChild(card);
+            });
+        }
+
+        function handleHistoryClick(event) {
+            const button = event.target.closest('button[data-id]');
+            if (!button) return;
+            const id = button.getAttribute('data-id');
+            const action = button.getAttribute('data-action');
+            const report = seedReports.find(r => r.id === id);
+            if (!report) return;
+
+            if (action === 'view') {
+                renderReport(report);
+            } else if (action === 'download') {
+                renderReport(report);
+                downloadActiveReport();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('scanForm').reset();
+            document.getElementById('notes').value = '';
+        }
+
+        document.getElementById('scanForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const target = document.getElementById('target').value.trim();
+            const ports = document.getElementById('ports').value.trim();
+            const profile = document.getElementById('profile').value;
+            const serviceDetection = document.getElementById('serviceDetection').checked;
+            const osDetection = document.getElementById('osDetection').checked;
+            const httpInfo = document.getElementById('httpInfo').checked;
+            const nseCategory = document.getElementById('nseCategory').value;
+            const output = document.getElementById('output').value;
+            const notes = document.getElementById('notes').value.trim();
+
+            if (!target) return;
+
+            const findings = generateFindings(profile);
+            const report = {
+                id: `run-${Date.now()}`,
+                target,
+                ports,
+                profile,
+                serviceDetection,
+                osDetection,
+                httpInfo,
+                nseCategory,
+                output,
+                notes,
+                startedAt: new Date().toISOString(),
+                duration: '00:00:15',
+                findings,
+            };
+
+            seedReports.push(report);
+            renderReport(report);
+            renderHistory();
+        });
+
+        downloadButton.addEventListener('click', downloadActiveReport);
+        historyList.addEventListener('click', handleHistoryClick);
+        document.getElementById('resetForm').addEventListener('click', resetForm);
+
+        renderHistory();
+        if (seedReports.length) {
+            renderReport(seedReports[0]);
+        }
+    </script>
 </body>
 
 </html>
