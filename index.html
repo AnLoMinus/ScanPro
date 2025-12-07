@@ -28,7 +28,6 @@
             color: var(--text);
             font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
-            direction: rtl;
         }
 
         header {
@@ -248,7 +247,7 @@
         .table th,
         .table td {
             padding: 12px;
-            text-align: right;
+            text-align: left;
             border-bottom: 1px solid var(--border);
         }
 
@@ -327,88 +326,6 @@
             background: rgba(12, 17, 23, 0.8);
         }
 
-        .quick-actions {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px dashed var(--border);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 6px;
-        }
-
-        .quick-actions strong {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .action-chip {
-            cursor: pointer;
-            border: none;
-            background: rgba(34, 211, 238, 0.1);
-            border: 1px solid var(--border);
-            color: var(--text);
-            border-radius: 10px;
-            padding: 10px 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .action-chip:hover {
-            background: rgba(16, 185, 129, 0.12);
-        }
-
-        .progress {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            display: grid;
-            gap: 8px;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: linear-gradient(135deg, #10b981, #22d3ee);
-            border-radius: 999px;
-            width: 0%;
-            transition: width 0.2s ease;
-        }
-
-        .status-filters {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .status-filters button {
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text);
-            padding: 8px 10px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .status-filters button.active {
-            background: rgba(16, 185, 129, 0.15);
-            border-color: #22d3ee;
-            color: #34d399;
-        }
-
-        .logs {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 13px;
-            white-space: pre-line;
-            color: #cbd5f5;
-        }
-
         @media (max-width: 600px) {
             nav {
                 flex-direction: column;
@@ -455,14 +372,6 @@
                 <div>
                     <h2>הגדרת סריקה</h2>
                     <p class="muted">בחרו בדיוק את אותם פרופילים וזיהויים שקיימים באפליקציה, כולל HTTP ו-NSE.</p>
-                    <div class="quick-actions">
-                        <strong>הפעלות מוכנות</strong>
-                        <div class="chips">
-                            <button type="button" class="action-chip" data-template="fast">⚡ סריקה מהירה</button>
-                            <button type="button" class="action-chip" data-template="web">🌐 בדיקת Web מלאה</button>
-                            <button type="button" class="action-chip" data-template="internal">🛰️ סריקה פנימית עם NSE</button>
-                        </div>
-                    </div>
                     <form id="scanForm">
                         <div>
                             <label for="target">מטרה (IP / Hostname)</label>
@@ -532,13 +441,6 @@
                         </div>
                         <button id="downloadReport" class="btn secondary" disabled>⬇️ הורד דוח נוכחי</button>
                     </div>
-                    <div id="progressBlock" class="progress" style="display: none;">
-                        <div style="display:flex; justify-content: space-between; align-items: center;">
-                            <strong>התקדמות סריקה</strong>
-                            <span id="progressLabel" class="muted">ממתין להרצה...</span>
-                        </div>
-                        <div class="progress-bar" id="progressBar"></div>
-                    </div>
                     <div class="report-grid" id="reportViewer">
                         <p class="muted">עוד לא נבחרה סריקה להצגה. הריצו או בחרו אחת מהיסטוריית הדוחות.</p>
                     </div>
@@ -558,16 +460,13 @@
     </main>
 
     <footer>
-        © 2024 ScanPro · סריקות, דוחות, והורדה במקום אחד. · <a href="https://github.com/ScanPro" style="color: #22d3ee;">קישור למאגר</a> · קרדיט: צוות ScanPro והקהילה.
+        © 2024 ScanPro · סריקות, דוחות, והורדה במקום אחד.
     </footer>
 
     <script>
         const historyList = document.getElementById('history');
         const reportViewer = document.getElementById('reportViewer');
         const downloadButton = document.getElementById('downloadReport');
-        const progressBlock = document.getElementById('progressBlock');
-        const progressBar = document.getElementById('progressBar');
-        const progressLabel = document.getElementById('progressLabel');
 
         const seedReports = [
             {
@@ -589,12 +488,6 @@
                     { port: '139/tcp', status: 'open', service: 'netbios-ssn', detail: 'Samba smbd 4.6.2' },
                     { port: '445/tcp', status: 'open', service: 'microsoft-ds', detail: 'Windows Server 2019' },
                 ],
-                logs: [
-                    '[09:12:00] התחלת סריקה עמוקה',
-                    '[09:12:08] זיהוי שירותים פתוחים...',
-                    '[09:12:31] הרצת NSE vuln',
-                    '[09:12:42] סיום דוח והפקה להורדה',
-                ],
             },
             {
                 id: 'example-web',
@@ -614,111 +507,12 @@
                     { port: '443/tcp', status: 'open', service: 'https', detail: 'TLS 1.3, HSTS, ALPN http/2' },
                     { port: '8080/tcp', status: 'filtered', service: 'http-proxy', detail: 'Firewall drop, banner hidden' },
                 ],
-                logs: [
-                    '[14:30:00] בדיקת HTTP/HTTPS',
-                    '[14:30:12] TLS 1.3 + HSTS זוהה',
-                    '[14:30:21] בדיקת CORS והרשאות',
-                    '[14:30:28] יצירת דוח JSON',
-                ],
             },
         ];
 
         let activeReport = null;
-        let statusFilter = 'all';
-        let progressTimer = null;
-
-        const templates = {
-            fast: {
-                target: '192.168.1.10',
-                ports: '1-1000',
-                profile: 'Quick',
-                serviceDetection: true,
-                osDetection: false,
-                httpInfo: false,
-                nseCategory: 'default',
-                output: 'txt',
-                notes: 'סריקה זריזה של פורטים נפוצים',
-            },
-            web: {
-                target: 'scanpro.demo',
-                ports: '80,443,8080',
-                profile: 'HTTP Info',
-                serviceDetection: true,
-                osDetection: false,
-                httpInfo: true,
-                nseCategory: 'safe',
-                output: 'html',
-                notes: 'בדיקת Web חיצונית עם איסוף כותרות ו-TLS',
-            },
-            internal: {
-                target: '10.10.10.5',
-                ports: '1-1024, 3389, 5985',
-                profile: 'Intense (Service + OS)',
-                serviceDetection: true,
-                osDetection: true,
-                httpInfo: true,
-                nseCategory: 'vuln',
-                output: 'json',
-                notes: 'תסריט פנימי כולל NSE ו-OS',
-            },
-        };
 
         const formatDate = (iso) => new Date(iso).toLocaleString();
-
-        function applyTemplate(key) {
-            const template = templates[key];
-            if (!template) return;
-            document.getElementById('target').value = template.target;
-            document.getElementById('ports').value = template.ports;
-            document.getElementById('profile').value = template.profile;
-            document.getElementById('serviceDetection').checked = template.serviceDetection;
-            document.getElementById('osDetection').checked = template.osDetection;
-            document.getElementById('httpInfo').checked = template.httpInfo;
-            document.getElementById('nseCategory').value = template.nseCategory;
-            document.getElementById('output').value = template.output;
-            document.getElementById('notes').value = template.notes;
-        }
-
-        function buildLogs(target) {
-            const time = new Date();
-            const pad = (n) => n.toString().padStart(2, '0');
-            const stamp = `${pad(time.getHours())}:${pad(time.getMinutes())}:${pad(time.getSeconds())}`;
-            return [
-                `[${stamp}] הוספת ${target} לתור הסריקות`,
-                `[${stamp}] בדיקת פורטים ופרוטוקולים`,
-                `[${stamp}] איסוף באנרים וגרסאות שירות`,
-                `[${stamp}] הפקת דוח להורדה ושיתוף`,
-            ];
-        }
-
-        function startProgress() {
-            progressBlock.style.display = 'grid';
-            progressBar.style.width = '6%';
-            progressLabel.textContent = 'סריקה התחילה...';
-            let width = 6;
-
-            clearInterval(progressTimer);
-            progressTimer = setInterval(() => {
-                width = Math.min(100, width + Math.random() * 18);
-                progressBar.style.width = `${width}%`;
-
-                if (width > 80) {
-                    progressLabel.textContent = 'מסיים בדיקות NSE ו-HTTP...';
-                } else if (width > 40) {
-                    progressLabel.textContent = 'זיהוי שירותים ומערכות...';
-                } else {
-                    progressLabel.textContent = 'סריקה בסיסית רצה...';
-                }
-
-                if (width >= 100) {
-                    clearInterval(progressTimer);
-                    progressLabel.textContent = 'הסריקה הסתיימה';
-                    setTimeout(() => {
-                        progressBlock.style.display = 'none';
-                    }, 600);
-                }
-            }, 400);
-        }
 
         function generateFindings(profile) {
             const base = [
@@ -772,11 +566,7 @@
                 </div>
             `;
 
-            const filteredFindings = statusFilter === 'all'
-                ? report.findings
-                : report.findings.filter(item => item.status === statusFilter);
-
-            const rows = filteredFindings.map(finding => `
+            const rows = report.findings.map(finding => `
                 <tr>
                     <td>${finding.port}</td>
                     <td><span class="status ${finding.status}">${finding.status}</span></td>
@@ -787,23 +577,14 @@
 
             const notesBlock = report.notes ? `<p class="muted">הערות: ${report.notes}</p>` : '';
 
-            const statusButtons = ['all', 'open', 'filtered', 'closed'].map(key => {
-                const labels = { all: 'הכל', open: 'פתוח', filtered: 'מסונן', closed: 'סגור' };
-                const active = statusFilter === key ? 'active' : '';
-                return `<button type="button" class="${active}" data-filter="${key}">${labels[key]}</button>`;
-            }).join('');
-
-            const logs = (report.logs || []).length ? `<div class="logs">${report.logs.join('\n')}</div>` : '';
-
             reportViewer.innerHTML = `
                 ${summaryHtml}
                 ${chipsHtml}
                 <div class="card" style="padding: 14px; background: rgba(255,255,255,0.02);">
                     <div class="report-header" style="margin-bottom: 6px;">
                         <h3 style="margin: 0;">פורט-שירות</h3>
-                        <span class="muted">${filteredFindings.length} מתוך ${report.findings.length} תוצאות</span>
+                        <span class="muted">${report.findings.length} תוצאות</span>
                     </div>
-                    <div class="status-filters" id="statusFilters">${statusButtons}</div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -819,15 +600,7 @@
                     </table>
                 </div>
                 ${notesBlock}
-                ${logs}
             `;
-
-            document.getElementById('statusFilters').addEventListener('click', (event) => {
-                const button = event.target.closest('button[data-filter]');
-                if (!button) return;
-                statusFilter = button.getAttribute('data-filter');
-                renderReport(report);
-            });
         }
 
         function downloadActiveReport() {
@@ -920,8 +693,6 @@
 
             if (!target) return;
 
-            startProgress();
-            statusFilter = 'all';
             const findings = generateFindings(profile);
             const report = {
                 id: `run-${Date.now()}`,
@@ -937,7 +708,6 @@
                 startedAt: new Date().toISOString(),
                 duration: '00:00:15',
                 findings,
-                logs: buildLogs(target),
             };
 
             seedReports.push(report);
@@ -948,9 +718,6 @@
         downloadButton.addEventListener('click', downloadActiveReport);
         historyList.addEventListener('click', handleHistoryClick);
         document.getElementById('resetForm').addEventListener('click', resetForm);
-        document.querySelectorAll('.action-chip').forEach(button => {
-            button.addEventListener('click', () => applyTemplate(button.getAttribute('data-template')));
-        });
 
         renderHistory();
         if (seedReports.length) {
